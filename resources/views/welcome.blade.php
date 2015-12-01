@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Yves est un Génie</div>
+                <div class="title">Laravel</div>
             </div>
         </div>
     </body>
