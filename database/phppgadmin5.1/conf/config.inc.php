@@ -18,7 +18,7 @@
 	$conf['servers'][0]['host'] = 'ec2-54-195-252-202.eu-west-1.compute.amazonaws.com';
 
 	// Database port on server (5432 is the PostgreSQL default)
-	$conf['servers'][0]['port'] = 5432;
+	$conf['servers'][0]['port'] = '5432';
 
 	// Database SSL mode
 	// Possible options: disable, allow, prefer, require
@@ -32,8 +32,8 @@
 
 	// Specify the path to the database dump utilities for this server.
 	// You can set these to '' if no dumper is available.
-	$conf['servers'][0]['pg_dump_path'] = '‪C:\Program Files\PostgreSQL\9.4\bin\pg_dump.exe';
-	$conf['servers'][0]['pg_dumpall_path'] = '‪C:\Program Files\PostgreSQL\9.4\bin\pg_dumpall.exe';
+	$conf['servers'][0]['pg_dump_path'] = '‪';
+	$conf['servers'][0]['pg_dumpall_path'] = '‪';
 
 	// Example for a second server (PostgreSQL for Windows)
 	//$conf['servers'][1]['desc'] = 'Test Server';
