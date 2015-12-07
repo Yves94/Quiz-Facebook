@@ -28,7 +28,7 @@
 
 	// Change the default database only if you cannot connect to template1.
 	// For a PostgreSQL 8.1+ server, you can set this to 'postgres'.
-	$conf['servers'][0]['defaultdb'] = 'template1';
+	$conf['servers'][0]['defaultdb'] = 'dc86g32jgdmkto';
 
 	// Specify the path to the database dump utilities for this server.
 	// You can set these to '' if no dumper is available.
@@ -90,7 +90,7 @@
 	// will be denied. Only set this false once you have read the FAQ and
 	// understand how to change PostgreSQL's pg_hba.conf to enable
 	// passworded local connections.
-	$conf['extra_login_security'] = false;
+	$conf['extra_login_security'] = true;
 
 	// Only show owned databases?
 	// Note: This will simply hide other databases in the list - this does
