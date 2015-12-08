@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/salut', function () {
+    	return ' salut les gens ';
+		});
+});
