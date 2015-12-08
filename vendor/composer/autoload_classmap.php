@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-<<<<<<< HEAD
     'ADOConnection' => $baseDir . '/database/phppgadmin5.1/libraries/adodb/adodb.inc.php',
     'ADODB_Cache_File' => $baseDir . '/database/phppgadmin5.1/libraries/adodb/adodb.inc.php',
     'ADODB_DataDict' => $baseDir . '/database/phppgadmin5.1/libraries/adodb/adodb-datadict.inc.php',
@@ -28,10 +27,8 @@ return array(
     'CallbackDecorator' => $baseDir . '/database/phppgadmin5.1/libraries/decorator.inc.php',
     'ConcatDecorator' => $baseDir . '/database/phppgadmin5.1/libraries/decorator.inc.php',
     'Connection' => $baseDir . '/database/phppgadmin5.1/classes/database/Connection.php',
-=======
     'CreateQuizzesTable' => $baseDir . '/database/migrations/2015_12_08_112909_create_quizzes_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2015_12_08_110131_create_users_table.php',
->>>>>>> 4376e66c2c78e283a331b81864cc380d426836b6
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Decorator' => $baseDir . '/database/phppgadmin5.1/libraries/decorator.inc.php',
     'FieldDecorator' => $baseDir . '/database/phppgadmin5.1/libraries/decorator.inc.php',
