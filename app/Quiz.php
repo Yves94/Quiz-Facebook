@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Quiz extends Model
 {
     //
     /**
@@ -12,7 +12,7 @@ class User extends Model
      *
      * @var string
      */
-    protected $table = 'users';
-    protected $primaryKey ='id_user';
+    protected $table = 'quiz';
+    protected $primaryKey ='id_quiz';
     public $timestamps = false;
 }
