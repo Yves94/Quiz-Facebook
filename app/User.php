@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    //
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-    protected $primaryKey ='id_user';
-    public $timestamps = false;
+
+    protected $fillable=['last_name','first_name','email','age_rangs','birthday','gender'];
+
+    public function quizs() {
+        $this->belongsToMany('App\Quiz');
+    }
+
+    public function jokers() {
+        $this->belongsToMany('App\Joker');
+    }
+
 }
