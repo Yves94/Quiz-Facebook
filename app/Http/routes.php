@@ -19,3 +19,5 @@ Route::group(['prefix' => 'admin'], function () {
     	return ' salut les gens ';
 		});
 });
+Route::get('/login', 'FacebookController@facebook');
+Route::get('/callback', 'FacebookController@callback');
