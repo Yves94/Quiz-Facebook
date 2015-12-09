@@ -14,10 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/salut', function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function () {
+    Route::get('/', function () {
     	return ' salut les gens ';
 		});
 });
-Route::get('/login', 'FacebookController@facebook');
-Route::get('/callback', 'FacebookController@callback');
+Route::get('/', 'Auth\AuthController@facebook');
+Route::get('/callback', 'Auth\AuthController@callback');
