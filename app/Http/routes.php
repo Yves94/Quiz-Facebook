@@ -18,4 +18,18 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/salut', function () {
     	return ' salut les gens ';
 		});
+    Route::group(['prefix' => 'quiz'], function () {
+        Route::get('/salut', function () {
+            return ' salut les gens ';
+        });
+        Route::get('/edit', function () {
+            return view('welcome');
+        });
+        Route::get('/list', function () {
+            return view('welcome');
+        });
+        Route::get('/add', 'QuizController@add');
+
+    });
+
 });
