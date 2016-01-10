@@ -26,6 +26,7 @@ Route::get('doit', function(){
     try{
         $admin = new Role();
         $admin->name = 'Admin';
+        $admin->display_name='Un Administrateur';
         $admin->save();
         return 'sucess';
     } catch(Exception $e){
