@@ -11,7 +11,7 @@
 |
 */
 use App\Role;
-
+use App\User;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,10 +24,19 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('doit', function(){
 
     try{
-        $admin = new Role();
+
+        /*$admin = new Role();
         $admin->name = 'Admin';
-        $admin->display_name='Un Administrateur';
-        $admin->save();
+        $admin->display_name ='Un Administrateur';
+        $admin->save();*/
+
+        $user = new User();
+        $user->first_name='Matthieu';
+        $user->last_name='Rochet';
+        $user->email='RochetMatthieu@gmail.com';
+        $user->age_rangs='25';
+        $user->birhday='28/02/1991';
+        $user->gender=0;
         return 'sucess';
     } catch(Exception $e){
         print_r($e);
