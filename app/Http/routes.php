@@ -34,8 +34,8 @@ Route::get('doit', function(){
         $user->first_name='Matthieu';
         $user->last_name='Rochet';
         $user->email='RochetMatthieu@gmail.com';
-        $user->age_rangs='25';
-        $user->birthday='28/02/1991';
+        $user->age_rangs=25;
+        $user->birthday=date('Y-m-d',strtotime('28/02/1991'));
         $user->gender=0;
         $user->save();
 
