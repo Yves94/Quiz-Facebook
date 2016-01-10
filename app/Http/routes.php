@@ -25,10 +25,10 @@ Route::get('doit', function(){
 
     try{
 
-        $admin = new Role();
+        /*$admin = new Role();
         $admin->name = 'Admin';
         $admin->display_name ='Un Administrateur';
-        $admin->save();
+        $admin->save();*/
 
         $user = new User();
         $user->first_name='Matthieu';
