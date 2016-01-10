@@ -37,6 +37,7 @@ Route::get('doit', function(){
         $user->age_rangs='25';
         $user->birhday='28/02/1991';
         $user->gender=0;
+        $user->save();
         return 'sucess';
     } catch(Exception $e){
         print_r($e);
