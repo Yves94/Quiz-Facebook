@@ -28,8 +28,8 @@ Route::get('doit', function(){
         $role->setName('administrateur');
         $role->setDisplayName('admin');
         $role->setDescription('can create, update, delete all quiz');
-        $role->setCreatedAt(strtotime('now'));
-        $role->setUpdatedAt(strtotime('now'));
+        $role->setCreatedAt(date('Y-m-d',strtotime('now')));
+        $role->setUpdatedAt(date('Y-m-d',strtotime('now')));
         $role->save();
         return 'sucess';
     } catch(Exception $e){
