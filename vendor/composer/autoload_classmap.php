@@ -520,7 +520,6 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-    'User' => $baseDir . '/database/migrations/2016_01_10_153327_user.php',
     'Zizaco\\Entrust\\ClassCreatorCommand' => $vendorDir . '/zizaco/entrust/src/commands/ClassCreatorCommand.php',
     'Zizaco\\Entrust\\MigrationCommand' => $vendorDir . '/zizaco/entrust/src/commands/MigrationCommand.php',
 );
