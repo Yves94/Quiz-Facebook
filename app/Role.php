@@ -6,7 +6,7 @@ use Zizaco\Entrust\EntrustRole;
 
 class Role extends EntrustRole
 {
-    private $id;
+    public $id;
     private $name;
     private $display_name;
     private $description;
@@ -52,7 +52,6 @@ class Role extends EntrustRole
     {
         return $this->id;
     }
-
     /**
      * @return mixed
      */
