@@ -9,6 +9,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 class User extends Model
 {
     use EntrustUserTrait;
+    protected $primaryKey='id_user';
     protected $fillable=['last_name','first_name','email','age_rangs','birthday','gender'];
 
     public function quizs() {

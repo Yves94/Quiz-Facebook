@@ -38,7 +38,7 @@ Route::get('doit', function(){
         $user->birthday='28/02/1991';
         $user->gender=0;
         $user->save();
-        
+
         $user->attachRole($admin);
         return 'sucess';
     } catch(Exception $e){
