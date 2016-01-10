@@ -27,7 +27,9 @@ Route::get('doit', function(){
         $role = new Role();
         $role->setName('administrateur');
         $role->setDisplayName('admin');
-        $role->getDescription('can create, update, delete all quiz');
+        $role->setDescription('can create, update, delete all quiz');
+        $role->setCreatedAt(strtotime('now'));
+        $role->setUpdatedAt(strtotime('now'));
         $role->save();
         return 'sucess';
     } catch(Exception $e){
