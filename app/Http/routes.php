@@ -29,9 +29,9 @@ Route::get('doit', function(){
         $admin->name = 'Admin';
         $admin->display_name ='Un Administrateur';
         $admin->save();*/
-        
+
         $admin = new Role();
-        $admin->Where('name','=','admin');
+        $admin= Role::where('name','=','Admin')->first();
 
         $user = new User();
         $user->first_name='Matthieu';
