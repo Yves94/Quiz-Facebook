@@ -33,15 +33,9 @@ Route::get('doit', function(){
         $admin = new Role();
         $admin= Role::where('name','=','Admin')->first();
 
-        /*$user = new User();
-        $user->first_name='Matthieu';
-        $user->last_name='Rochet';
-        $user->email='RochetMatthieu@gmail.com';
-        $user->age_rangs=25;
-        $user->birthday=date('Y-m-d',strtotime('28/02/1991'));
-        $user->gender=0;
-        $user->save();*/
-
+        $user = new User();
+        $user = User::where('first_name','=','Matthieu')->first();
+        
         $user->attachRole($admin);
         return 'sucess';
     } catch(Exception $e){
