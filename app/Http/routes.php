@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin'], function () {
 		});
 });
 
-Route::get('doIt', function(){
+Route::get('doit', function(){
 
     try{
         $role = new Role();
