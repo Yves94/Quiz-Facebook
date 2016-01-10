@@ -23,9 +23,15 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('doIt', function(){
 
-    $role = new Role();
-    $role->setName('administrateur');
-    $role->setDisplayName('admin');
-    $role->getDescription('can create, update, delete all quiz');
-    $role->save();
+    try{
+        $role = new Role();
+        $role->setName('administrateur');
+        $role->setDisplayName('admin');
+        $role->getDescription('can create, update, delete all quiz');
+        $role->save();
+        return 'sucess';
+    } catch(Exception $e){
+        print_r($e);
+    }
+
 });
