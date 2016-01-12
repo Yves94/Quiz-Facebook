@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected  $fillable = ['wording_categoriy'];
+    protected $primaryKey = 'id_category';
+    protected  $fillable = ['wording_category'];
 
     public function questions() {
-        $this->belongsToMany('App\Question');
+        return $this->belongsToMany('App\Question');
     }
 }

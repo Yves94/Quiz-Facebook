@@ -22,6 +22,7 @@ class CreateQuizzesTable extends Migration
             $table->date('start_date');
             $table->date('end_start');
             $table->string('color');
+            $table->timestamps();
         });
 
         Schema::create('quiz_user', function(Blueprint $table) {
@@ -41,5 +42,6 @@ class CreateQuizzesTable extends Migration
     public function down()
     {
         Schema::drop('quiz');
+        Schema::drop('quiz_user');
     }
 }

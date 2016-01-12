@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
-
+    protected $table = 'quiz';
+    protected $primaryKey = 'id_quiz';
     protected $fillable=['title','slug','nb_question','summary','picture','start_date','end_start'];
 
     public function users() {
 
-        $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User');
     }
 
     public function questions() {
 
-        $this->belongsToMany('App\Question');
+        return $this->belongsToMany('App\Question');
     }
 }

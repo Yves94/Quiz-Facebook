@@ -22,13 +22,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/salut', function () {
             return ' salut les gens ';
         });
-        Route::get('/edit', function () {
-            return view('welcome');
-        });
-        Route::get('/list', function () {
-            return view('welcome');
-        });
-        Route::get('/add', 'QuizController@add');
+
+        Route::get('list', 'QuizController@listQuizzes');
+        Route::get('show/{slug}', 'QuizController@showQuiz');
 
     });
 

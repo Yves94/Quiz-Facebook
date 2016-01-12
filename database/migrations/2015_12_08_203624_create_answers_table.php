@@ -34,5 +34,6 @@ class CreateAnswersTable extends Migration
     public function down()
     {
         Schema::drop('answers');
+        Schema::drop('answer_question');
     }
 }

@@ -37,5 +37,6 @@ class CreateJokersTable extends Migration
     public function down()
     {
         Schema::drop('jokers');
+        Schema::drop('joker_user');
     }
 }

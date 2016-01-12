@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+    protected $primaryKey = 'id_answer';
     protected $fillable = ['wording_answer'];
 
     public function questions() {
-        $this->belongsToMany('App\Question');
+        return $this->belongsToMany('App\Question');
     }
 }

@@ -34,5 +34,6 @@ class CreateQuestionsTable extends Migration
     public function down()
     {
         Schema::drop('questions');
+        Schema::drop('question_quiz');
     }
 }

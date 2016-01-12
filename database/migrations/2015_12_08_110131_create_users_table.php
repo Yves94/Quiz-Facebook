@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->integer('age_rangs');
             $table->date('birthday');
             $table->boolean('gender');
+            $table->timestamps();
         });
     }
 
@@ -31,5 +32,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::drop('users');
+
     }
 }

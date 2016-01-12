@@ -105,7 +105,7 @@ class InflectorTest extends DoctrineTestCase
             array('plateau', 'plateaux'),
             array('potato', 'potatoes'),
             array('powerhouse', 'powerhouses'),
-            array('quiz', 'quizzes'),
+            array('quiz', 'quiz'),
             array('radius', 'radii'),
             array('reflex', 'reflexes'),
             array('roof', 'roofs'),
