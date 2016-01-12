@@ -19,5 +19,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function () {
     	return ' salut les gens ';
 		});
 });
-Route::get('/', 'Auth\AuthController@facebook');
+Route::get('/login', 'Auth\AuthController@facebook');
 Route::get('/callback', 'Auth\AuthController@callback');
