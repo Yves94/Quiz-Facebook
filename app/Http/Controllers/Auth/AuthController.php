@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Socialite;
 
 class AuthController extends Controller
 {
@@ -61,5 +62,20 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function facebook()
+    {
+        return Socialite::with('facebook')->redirect();
+    }
+
+    public function callback()
+    {
+        $user = Socialite::with('facebook')->user();
+
+        //now we have user details in the $user array
+        dd($user);
+        var_dump($user);exit;
+
     }
 }
