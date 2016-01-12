@@ -41,7 +41,7 @@ class CreateQuizzesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('quiz');
         Schema::drop('quiz_user');
+        Schema::drop('quiz');
     }
 }

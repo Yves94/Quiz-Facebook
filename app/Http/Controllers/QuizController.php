@@ -48,7 +48,7 @@ class QuizController extends Controller
     public function showQuiz($slug)
     {
 
-        $aQuiz = Quiz::where(['slug' => 'test'])->get();
+        $aQuiz = Quiz::where(['slug' => $slug])->get();
         if ($aQuiz->count() != 1) {
             echo 'not found';
             return false;
