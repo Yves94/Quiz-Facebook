@@ -10,7 +10,8 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+use App\Role;
+use App\User;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,4 +24,5 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('login', 'Auth\AuthController@facebook');
 
 Route::get('callback', 'Auth\AuthController@callback');
+
 
