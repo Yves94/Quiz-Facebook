@@ -1,4 +1,5 @@
-/vendor
+/vendor/*
+!/vendor/composer/
 /node_modules
 Homestead.yaml
 Homestead.json
