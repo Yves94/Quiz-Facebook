@@ -23,7 +23,6 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
     /**
      * Create a new authentication controller instance.
      *
@@ -97,13 +96,15 @@ class AuthController extends Controller
               ]
             "avatar_original": "https://graph.facebook.com/v2.5/10207758778745129/picture?width=1920"
         */
-         User::create([
-            'last_name'     => $user['user']['last_name'],
-            'first_name'    => $user['user']['first_name'],
-            'email'         => $user['user']['email'],
-            'gender'        => ($user['user']['gender']) == male ? 0 : 1,
-            'birthday'      => $user['user']['birthday'],
-            'age_rangs'     => $user['user']['age_range']['min']
+             $current_user = User::updateOrCreate(['email' =>$user->user['email']],[
+            'last_name'     => $user->user['last_name'],
+            'first_name'    => $user->user['first_name'],
+            'email'         => $user->user['email'],
+            'gender'        => ($user->user['gender']) == 'male' ? 0 : 1,
+            'birthday'      => $user->user['birthday'],
+            'age_rangs'     => $user->user['age_range']['min']
             ]);
+            
+             dd($current_user);
     }
 }
