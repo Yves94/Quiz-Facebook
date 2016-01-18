@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin'], function () {
 		});
 });
 
-Route::get('/login', 'Auth\AuthController@facebook');
+Route::get('login', 'Auth\AuthController@facebook');
 
-Route::get('/callback', 'Auth\AuthController@callback');
+Route::get('callback', 'Auth\AuthController@callback');
 
