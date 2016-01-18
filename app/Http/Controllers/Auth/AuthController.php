@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -105,6 +106,8 @@ class AuthController extends Controller
             'age_rangs'     => $user->user['age_range']['min']
             ]);
             
-             dd($current_user);
+            $admin = new Role();
+            $admin = Role::where('name','=','Admin')->First();
+            $current_user->attachRole($admin);
     }
 }
