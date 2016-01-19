@@ -24,4 +24,8 @@ Route::get('login', 'Auth\AuthController@facebook');
 
 Route::get('callback', 'Auth\AuthController@callback');
 
-
+Route::group(['middleware' => ['auth']], function(){
+	Route::get('home',array('as'=>'home', 'uses'=>function(){
+	return view('home');
+	}));
+});

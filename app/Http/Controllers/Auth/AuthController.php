@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Socialite;
-
+use Auth;
 class AuthController extends Controller
 {
     /*
@@ -87,10 +87,9 @@ class AuthController extends Controller
         'birthday'      => $user->user['birthday'],
         'age_rangs'     => $user->user['age_range']['min']
         ]);
-         
-        //attach Role to user   
-        $admin = new Role();
-        $admin = Role::where('name','=','Admin')->first();
-        $current_user->attachRole($admin);
+
+        Auth::login($current_user,true);//Log le user
+
+        return redirect()->route('home');
     }
 }
