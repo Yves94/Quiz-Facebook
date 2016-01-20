@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin'], function () {
         });
 
         Route::get('list', 'QuizController@listQuizzes');
-        Route::get('show/{slug}', 'QuizController@showQuiz');
+        Route::match(array('GET', 'POST'),'edit/{slug}', 'QuizController@editQuiz');
 
     });
 
