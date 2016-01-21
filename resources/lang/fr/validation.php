@@ -83,11 +83,7 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
-    'custom'               => [
-        'slug' => [
-            'required' => 'message',
-        ],
-    ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
@@ -128,5 +124,7 @@ return [
         'time'                  => 'Heure',
         'available'             => 'Disponible',
         'size'                  => 'Taille',
+        'start_date'            => 'Date de d&aecute;but',
+        'end_start'             => 'Date de fin'
     ],
 ];

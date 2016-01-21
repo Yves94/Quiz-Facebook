@@ -22,7 +22,7 @@ class QuizController extends Controller
     public function listQuizzes()
     {
         $quizzes = Quiz::with('users')->where(['id_quiz' => 1])->get()->first();
-        dd($quizzes->users);
+        //dd($quizzes->users);
         /*foreach ($quizzes as $quiz) {
             foreach ($quiz->users()->get() as $user) {
                 var_dump($user->toArray());
@@ -33,31 +33,40 @@ class QuizController extends Controller
 
     }
 
-    public function addQuiz()
+        public function addQuiz(Request $request)
     {
+        $quiz = new Quiz();
 
-        $aQuiz = ['title' => 'first Quiz',
-            'slug' => 'firstQuiz',
-            'nb_question' => 1,
-            'summary' => "dzeqf",
-            'picture' => "img.jpg"];
-        $quiz = \App\Quiz::create($aQuiz);
+        if ($request->isMethod('post'))
+        {
+            $this->validate($request, [
+                'title' => 'required|max:255|unique:quiz',
+                'slug' => 'required|unique:quiz,id_quiz|max:255',
+                'nb_questions' => 'required|int',
+                'summary' => 'required',
+                'picture' => 'required',
+                'start_date' => 'required',
+                'end_start' => 'required'
+            ]);
 
-        die('ok');
-        return view('admin.index');
+            $quiz->title = $request->title;
+            $quiz->slug = $request->slug;
+            $quiz->nb_questions = $request->nb_questions;
+            $quiz->summary = $request->summary;
+            $quiz->picture = $request->picture;
+            $quiz->start_date = $request->start_date;
+            $quiz->end_start = $request->end_start;
+            $quiz->title = $request->title;
+            $quiz->color = $request->color;
+            $quiz->save();
+        }
+
+        $data['quiz'] = $quiz;
+        return view('BackOffice.addQuiz', $data);
     }
 
     public function editQuiz($slug, Request $request)
     {
-
-        // if post -> check form
-        if ($request->isMethod('post'))
-        {
-            $this->validate($request, [
-                'slug' => 'required|unique:posts|max:255',
-            ]);
-        }
-
 
         $aQuiz = Quiz::where(['slug' => $slug])->get();
         if ($aQuiz->count() != 1) {
@@ -66,9 +75,37 @@ class QuizController extends Controller
         }
         $quiz = $aQuiz->first();
 
+        if ($request->isMethod('post'))
+        {
+
+
+            $this->validate($request, [
+                'title' => 'required|max:255|unique:quiz,title,'.$quiz->id_quiz.',id_quiz',
+                'slug' => 'required|unique:quiz,slug,'.$quiz->id_quiz.',id_quiz|max:255',
+                'nb_questions' => 'required|int',
+                'summary' => 'required',
+                'picture' => 'required',
+                'start_date' => 'required',
+                'end_start' => 'required'
+            ]);
+
+            $quiz->title = $request->title;
+            $quiz->slug = $request->slug;
+            $quiz->nb_questions = $request->nb_questions;
+            $quiz->summary = $request->summary;
+            $quiz->picture = $request->picture;
+
+
+            $quiz->start_date = \DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
+            $quiz->end_start = \DateTime::createFromFormat('d/m/Y', $request->end_start)->format('Y-m-d');
+            $quiz->title = $request->title;
+            $quiz->color = $request->color;
+            $quiz->save();
+
+        }
+
         $data['quiz'] = $quiz;
         return view('BackOffice.editQuiz', $data);
-
     }
 
     public function participants()

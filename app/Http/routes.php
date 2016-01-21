@@ -19,13 +19,9 @@ Route::group(['prefix' => 'admin'], function () {
     	return ' salut les gens ';
 		});
     Route::group(['prefix' => 'quiz'], function () {
-        Route::get('/salut', function () {
-            return ' salut les gens ';
-        });
-
         Route::get('list', 'QuizController@listQuizzes');
         Route::match(array('GET', 'POST'),'edit/{slug}', 'QuizController@editQuiz');
-
+        Route::match(array('GET', 'POST'),'add', 'QuizController@addQuiz');
     });
 
 });

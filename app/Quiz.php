@@ -8,7 +8,7 @@ class Quiz extends Model
 {
     protected $table = 'quiz';
     protected $primaryKey = 'id_quiz';
-    protected $fillable=['title','slug','nb_question','summary','picture','start_date','end_start'];
+    protected $fillable=['title','slug','nb_questions','summary','picture','start_date','end_start'];
 
     public function users() {
 
