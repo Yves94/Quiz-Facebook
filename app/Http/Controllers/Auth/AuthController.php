@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Socialite;
+use Auth;
 class AuthController extends Controller
 {
     /*
@@ -22,7 +24,6 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
     /**
      * Create a new authentication controller instance.
      *
@@ -61,5 +62,34 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function facebook()
+    {
+       return Socialite::driver('facebook')->fields([
+                'first_name', 'last_name', 'email', 'gender', 'birthday','age_range'
+            ])->scopes([
+                'email', 'user_birthday'
+            ])->redirect();
+    }
+
+    public function callback()
+    {
+        //get the user information with facebook's driver
+        $user = Socialite::driver('facebook')->fields(['first_name', 'last_name', 'email', 'gender', 'birthday','age_range'])->user();
+
+        //create or update current_user
+        $current_user = User::updateOrCreate(['email' =>$user->user['email']],[
+        'last_name'     => $user->user['last_name'],
+        'first_name'    => $user->user['first_name'],
+        'email'         => $user->user['email'],
+        'gender'        => ($user->user['gender']) == 'male' ? 0 : 1,
+        'birthday'      => $user->user['birthday'],
+        'age_rangs'     => $user->user['age_range']['min']
+        ]);
+
+        Auth::login($current_user,true);//Log le user
+
+        return redirect()->route('home');
     }
 }

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday');
             $table->boolean('gender');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 

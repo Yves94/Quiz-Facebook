@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+use App\User;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,4 +24,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::match(array('GET', 'POST'),'add', 'QuizController@addQuiz');
     });
 
+});
+
+Route::get('login', 'Auth\AuthController@facebook');
+
+Route::get('callback', 'Auth\AuthController@callback');
+
+Route::group(['middleware' => ['auth']], function(){
+	Route::get('home',array('as'=>'home', 'uses'=>function(){
+	return view('home');
+	}));
 });

@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id'     => '1015909901808634',
+        'client_secret' => '31702599f5c83eb2bc72d902dd4923b9',
+        'redirect'      => 'http://qiz.dev/callback',
+    ],
 ];

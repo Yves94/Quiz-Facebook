@@ -29,5 +29,8 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'role' => Zizaco\entrust\src\Entrust\Middleware\EntrustRole::class,
+        'permission' => Zizaco\entrust\src\Entrust\Middleware\EntrustPermission::class,
+        'ability' => Zizaco\entrust\src\Entrust\Middleware\EntrustAbility::class
     ];
 }
