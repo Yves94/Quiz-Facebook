@@ -38,6 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="title">Laravel</div>
             </div>
         </div>
