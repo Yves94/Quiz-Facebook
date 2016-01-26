@@ -20,7 +20,7 @@ class CreateQuizzesTable extends Migration
             $table->string('summary');
             $table->string('picture');
             $table->date('start_date');
-            $table->date('end_start');
+            $table->date('end_date');
             $table->string('color');
             $table->timestamps();
         });
