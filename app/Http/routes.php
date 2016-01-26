@@ -26,9 +26,10 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-Route::get('login', ['uses' => 'Auth\AuthController@facebook', 'https' => true]);
 
-Route::get('callback', ['uses' => 'Auth\AuthController@callback', 'https' => true]);
+Route::get('login','Auth\AuthController@facebook');
+
+Route::get('callback', 'Auth\AuthController@callback');
 
 Route::group(['middleware' => ['auth']], function(){
 	Route::get('home',array('as'=>'home', 'uses'=>function(){
