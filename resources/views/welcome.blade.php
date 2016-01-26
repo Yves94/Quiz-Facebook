@@ -36,6 +36,7 @@
         </style>
     </head>
     <body>
+        {{ csrf_field() }}
         <div class="container">
             <div class="content">
                 <div class="title">Laravel</div>
