@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'https://quizfb.herokuapp.com/',
+    'url' => 'https://quizfb.herokuapp.com/'-redirect-all-requests-to-https,
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomString'),
+    'key' => env('APP_KEY', '9tMWO1zABQdeNFydjCSJPnGenGUczLou'),
 
     'cipher' => 'AES-256-CBC',
 
