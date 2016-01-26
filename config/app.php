@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'https://www.quizfb.herokuapp.com/'-redirect-all-requests-to-https,
+    'url' => 'https://www.quizfb.herokuapp.com/',
 
     /*
     |--------------------------------------------------------------------------
