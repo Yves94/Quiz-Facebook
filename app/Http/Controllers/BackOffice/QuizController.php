@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackOffice;
 
 use App\Http\Requests\EditQuizRequest;
 use \App\Quiz as Quiz;
@@ -9,26 +9,21 @@ use App\Http\Requests;
 
 class QuizController extends Controller
 {
-    /**
-     * Instantiate a new UserController instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function listQuizzes(Request $request)
     {
+        // search case
+        if ($request->isMethod('post'))
+        {
+            $this->validate($request,[
+                'search' => 'required|alpha_num'
+            ]);
+            $data['quizzes'] = \App\Quiz::where('title', 'like', '%'.$request->search.'%')
+                                ->orWhere('summary', 'like', '%'.$request->search.'%')
+                                ->paginate(5);
+        } else {
+            $data['quizzes'] = \App\Quiz::with('creator')->paginate(1);
+        }
 
-    }
-
-    public function listQuizzes()
-    {
-        $quizzes = Quiz::with('users')->where(['id_quiz' => 1])->get()->first();
-        //dd($quizzes->users);
-        /*foreach ($quizzes as $quiz) {
-            foreach ($quiz->users()->get() as $user) {
-                var_dump($user->toArray());
-            }
-        }*/
-        $data['quizzes'] = \App\Quiz::with('users')->get();
         return view('BackOffice.ListQuizzes', $data);
 
     }
@@ -62,6 +57,7 @@ class QuizController extends Controller
         }
 
         $data['quiz'] = $quiz;
+
         return view('BackOffice.addQuiz', $data);
     }
 

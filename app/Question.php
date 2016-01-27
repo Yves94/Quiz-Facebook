@@ -24,6 +24,15 @@ class Question extends Model
     public function answers() {
         return $this->belongsToMany('App\Answer');
     }
+    public function getCategoriesIdToArray()
+    {
+        $array = [];
+        $category = $this->categories()->get();
+        foreach($category as $k => $v) {
+            $array[] = $v->id_category;
+        }
+        return $array;
+    }
 }
 
 

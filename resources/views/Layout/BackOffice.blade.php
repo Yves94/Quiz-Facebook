@@ -7,12 +7,17 @@
     <script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
+    <link href="{{ asset('assets/css/bootstrap-multiselect.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('assets/js/bootstrap-multiselect.js') }}"></script>
+
     <!-- ... -->
     <script type="text/javascript" src="{{ asset('assets/bower_components/moment/min/moment.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
     <link rel="stylesheet" href="{{ asset('assets/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+
 </head>
 <body>
 @section('sidebar')
@@ -64,6 +69,10 @@
             locale: 'fr',
             //format: 'd/MM/YYYY'
             format: 'L'
+        });
+        $('.multiselect').multiselect({
+            nonSelectedText: 'Selectionnez une valeur',
+            allSelectedText: 'Tout est sélectionné'
         });
     });
 </script>

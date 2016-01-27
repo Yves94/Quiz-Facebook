@@ -15,13 +15,15 @@ use App\User;
     return view('welcome');
 });*/
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/salut', function () {
-    	return ' salut les gens ';
-		});
     Route::group(['prefix' => 'quiz'], function () {
-        Route::get('list', 'QuizController@listQuizzes');
-        Route::match(array('GET', 'POST'),'edit/{slug}', 'QuizController@editQuiz');
-        Route::match(array('GET', 'POST'),'add', 'QuizController@addQuiz');
+        Route::match(array('GET', 'POST'),'list', 'BackOffice\QuizController@listQuizzes');
+        Route::match(array('GET', 'POST'),'edit/{slug}', 'BackOffice\QuizController@editQuiz');
+        Route::match(array('GET', 'POST'),'add', 'BackOffice\QuizController@addQuiz');
+    });
+    Route::group(['prefix' => 'question'], function () {
+        Route::match(array('GET', 'POST'),'list', 'BackOffice\questionController@listQuestions');
+        Route::match(array('GET', 'POST'),'edit/{id}', 'BackOffice\questionController@editQuestion');
+        Route::match(array('GET', 'POST'),'add', 'BackOffice\questionController@addQuestion');
     });
 
 });

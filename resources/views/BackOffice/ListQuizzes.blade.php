@@ -10,6 +10,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                {!! Form::open(['url' => 'admin/quiz/list','method'=>'POST']) !!}
+                <div class="form-group">
+                    {!! Form::label('search', 'Rechercher') !!}
+                    {!! Form::text('search',null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::submit('Rechercher') !!}
+                </div>
+                {!! Form::close() !!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <table class="table table-striped table-hover ">
                     <tr>
                         <th>
@@ -17,6 +30,9 @@
                         </th>
                         <th>
                             {{ 'Titre' }}
+                        </th>
+                        <th>
+                            {{ 'Author' }}
                         </th>
                         <th>
                             {{ 'Slug' }}
@@ -36,38 +52,66 @@
                         <th>
                             {{ 'Date de fin' }}
                         </th>
+                        <th>
+                            {{ 'Color' }}
+                        </th>
+                        <th>
+                            {{ 'Supprimer' }}
+                        </th>
 
                     </tr>
 
                     @foreach ($quizzes as $k => $quiz)
+                        <?php $creator = $quiz->creator()->get()->first() ?>
                         <tr @if($k%2==0) class="info" @endif>
                             <td>
-                                {{ $quiz->id }}
+                                {{ $quiz['id_quiz'] }}
                             </td>
                             <td>
-                                {{ $quiz->title }}
+                                {{ $quiz['title'] }}
                             </td>
                             <td>
-                                {{ $quiz->slug }}
+                                {{
+                                    $creator->first_name
+                                    .' '.
+                                        $creator->last_name
+                                }}
                             </td>
                             <td>
-                                {{ $quiz->nb_question }}
+                                {{ $quiz['slug'] }}
                             </td>
                             <td>
-                                {{ $quiz->summary }}
+                                {{ $quiz['nb_question'] }}
                             </td>
                             <td>
-                                {{ $quiz->picture }}
+                                {{ $quiz['summary'] }}
                             </td>
                             <td>
-                                {{ $quiz->start_date }}
+                                {{ $quiz['picture'] }}
                             </td>
                             <td>
-                                {{ $quiz->end_start }}
+                                {{ $quiz['start_date'] }}
+                            </td>
+                            <td>
+                                {{ $quiz['end_start'] }}
+                            </td>
+                            <td>
+                                {{ $quiz['color'] }}
+                            </td>
+                            <td>
+
                             </td>
                         </tr>
                     @endforeach
                 </table>
+                <!-- generate links to the rest of the pages -->
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {!! $quizzes->render() !!}
             </div>
         </div>
 

@@ -15,6 +15,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id_question');
             $table->string('wording_question')->unique();
+            $table->timestamps();
         });
 
         Schema::create('question_quiz',function (Blueprint $table){
