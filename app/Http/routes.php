@@ -26,10 +26,22 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+Route::get('/facebook/canvas', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+    try {
+        $token = $fb->getCanvasHelper()->getAccessToken();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // Failed to obtain access token
+        dd($e->getMessage());
+    }
 
-Route::get('login','Auth\AuthController@facebook');
+    // $token will be null if the user hasn't authenticated your app yet
+    if (! $token) {
+        Route::get('login','Auth\AuthController@facebook');
+    }
+});  
 
-Route::get('callback', 'Auth\AuthController@callback');
+
+//Route::get('callback', 'Auth\AuthController@callback');
 
 Route::group(['middleware' => ['auth']], function(){
 	Route::get('home',array('as'=>'home', 'uses'=>function(){
