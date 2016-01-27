@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-Route::get('/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getCanvasHelper()->getAccessToken();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
