@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'https://www.quizfb.herokuapp.com/',
+    'url' => 'https://quizfb.herokuapp.com/',
 
     /*
     |--------------------------------------------------------------------------
