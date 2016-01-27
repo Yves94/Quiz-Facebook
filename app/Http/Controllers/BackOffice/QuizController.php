@@ -19,16 +19,25 @@ class QuizController extends Controller
 
     }
 
-    public function listQuizzes()
+    public function listQuizzes(Request $request)
     {
-        $quizzes = Quiz::with('users')->where(['id_quiz' => 1])->get()->first();
-        //dd($quizzes->users);
-        /*foreach ($quizzes as $quiz) {
-            foreach ($quiz->users()->get() as $user) {
-                var_dump($user->toArray());
-            }
-        }*/
-        $data['quizzes'] = \App\Quiz::with('users')->get();
+
+        //dd(Quiz::find(4)->creator()->get()->first()->last_name);
+        //dd(Quiz::with('creator')->get());
+        //Quiz::with('creator')->get();
+        if ($request->isMethod('post'))
+        {
+            $this->validate($request,[
+                'search' => 'required|alpha_num'
+            ]);
+            $data['quizzes'] = \App\Quiz::where('title', 'like', '%'.$request->search.'%')
+                                ->orWhere('summary', 'like', '%'.$request->search.'%')
+                                ->paginate(5);
+        } else {
+            $data['quizzes'] = \App\Quiz::with('creator')->paginate(1);
+
+        }
+
         return view('BackOffice.ListQuizzes', $data);
 
     }
