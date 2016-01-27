@@ -23,6 +23,8 @@ class CreateQuizzesTable extends Migration
             $table->date('end_start');
             $table->string('color');
             $table->timestamps();
+            $table->integer('creator')->unsigned()->index();
+            $table->foreign('creator')->references('id_user')->on('users')->onDelete('cascade');
         });
 
         Schema::create('quiz_user', function(Blueprint $table) {

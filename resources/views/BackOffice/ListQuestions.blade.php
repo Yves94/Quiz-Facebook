@@ -1,6 +1,6 @@
 @extends('Layout.BackOffice')
 
-@section('title', 'Les Quizzes')
+@section('title', 'Les Question')
 
 @section('sidebar')
     @parent
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['url' => 'admin/quiz/list','method'=>'POST']) !!}
+                {!! Form::open(['url' => 'admin/question/list','method'=>'POST']) !!}
                 <div class="form-group">
                     {!! Form::label('search', 'Rechercher') !!}
                     {!! Form::text('search',null, ['class' => 'form-control']) !!}
@@ -29,77 +29,48 @@
                             {{ 'Id' }}
                         </th>
                         <th>
-                            {{ 'Titre' }}
+                            {{ 'Question' }}
                         </th>
                         <th>
-                            {{ 'Author' }}
+                            {{ 'Réponses' }}
                         </th>
                         <th>
-                            {{ 'Slug' }}
+                            {{ 'Categorie' }}
                         </th>
-                        <th>
-                            {{ 'Nombre de Question' }}
-                        </th>
-                        <th>
-                            {{ 'Sommaire' }}
-                        </th>
-                        <th>
-                            {{ 'Image' }}
-                        </th>
-                        <th>
-                            {{ 'Date de début' }}
-                        </th>
-                        <th>
-                            {{ 'Date de fin' }}
-                        </th>
-                        <th>
-                            {{ 'Color' }}
-                        </th>
-                        <th>
-                            {{ 'Supprimer' }}
-                        </th>
-
                     </tr>
 
-                    @foreach ($quizzes as $k => $quiz)
-                        <?php $creator = $quiz->creator()->get()->first() ?>
+                    @foreach ($questions as $k => $question)
+                        <!-- display answers-->
+                        <?php $answers = $question->answers()->get() ?>
+                        {{$answers_text = ''}}
+                        @foreach($answers as $k_answer => $answer)
+                            <?php $answers_text .= $answer->wording_answer ?>
+                            @if(count($answers)-1 != $k_answer)
+                                    <?php $answers_text .= ' - ' ?>
+                            @endif
+                        @endforeach
+                                <!-- display categorie-->
+                        <?php $categories = $question->categories()->get() ?>
+
+                        {{$categories_text = ''}}
+                        @foreach($categories as $k_category => $category)
+                            <?php $categories_text .= $category->wording_category ?>
+                            @if(count($categories)-1 != $k_category)
+                                <?php $categories_text .= ' - ' ?>
+                            @endif
+                        @endforeach
                         <tr @if($k%2==0) class="info" @endif>
                             <td>
-                                {{ $quiz['id_quiz'] }}
+                                {{ $question->id_question }}
                             </td>
                             <td>
-                                {{ $quiz['title'] }}
+                                {{ $question->wording_question }}
                             </td>
                             <td>
-                                {{
-                                    $creator->first_name
-                                    .' '.
-                                        $creator->last_name
-                                }}
+                                {{ $answers_text }}
                             </td>
                             <td>
-                                {{ $quiz['slug'] }}
-                            </td>
-                            <td>
-                                {{ $quiz['nb_question'] }}
-                            </td>
-                            <td>
-                                {{ $quiz['summary'] }}
-                            </td>
-                            <td>
-                                {{ $quiz['picture'] }}
-                            </td>
-                            <td>
-                                {{ $quiz['start_date'] }}
-                            </td>
-                            <td>
-                                {{ $quiz['end_start'] }}
-                            </td>
-                            <td>
-                                {{ $quiz['color'] }}
-                            </td>
-                            <td>
-
+                                {{ $categories_text }}
                             </td>
                         </tr>
                     @endforeach
@@ -111,7 +82,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                {!! $quizzes->render() !!}
+                {!! $questions->render() !!}
             </div>
         </div>
 

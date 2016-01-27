@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackOffice;
 
 use App\Http\Requests\EditQuizRequest;
 use \App\Quiz as Quiz;
@@ -9,22 +9,9 @@ use App\Http\Requests;
 
 class QuizController extends Controller
 {
-    /**
-     * Instantiate a new UserController instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-
-    }
-
     public function listQuizzes(Request $request)
     {
-
-        //dd(Quiz::find(4)->creator()->get()->first()->last_name);
-        //dd(Quiz::with('creator')->get());
-        //Quiz::with('creator')->get();
+        // search case
         if ($request->isMethod('post'))
         {
             $this->validate($request,[
@@ -35,7 +22,6 @@ class QuizController extends Controller
                                 ->paginate(5);
         } else {
             $data['quizzes'] = \App\Quiz::with('creator')->paginate(1);
-
         }
 
         return view('BackOffice.ListQuizzes', $data);
@@ -71,6 +57,7 @@ class QuizController extends Controller
         }
 
         $data['quiz'] = $quiz;
+
         return view('BackOffice.addQuiz', $data);
     }
 
