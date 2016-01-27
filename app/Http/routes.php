@@ -11,9 +11,9 @@
 |
 */
 use App\User;
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/salut', function () {
     	return ' salut les gens ';
@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-Route::get('/facebook/canvas', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getCanvasHelper()->getAccessToken();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -38,6 +38,7 @@ Route::get('/facebook/canvas', function(SammyK\LaravelFacebookSdk\LaravelFaceboo
     if (! $token) {
         Route::get('login','Auth\AuthController@facebook');
     }
+     return view('welcome');
 });  
 
 
