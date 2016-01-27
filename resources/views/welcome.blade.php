@@ -7,7 +7,6 @@
          <script src="{{ secure_asset('assets/js/bootstrap.min.js') }}"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <style>
             html, body {
                 height: 100%;
