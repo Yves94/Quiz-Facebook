@@ -41,8 +41,8 @@
         <div class="container">
             <div class="content">
 
-                {{Session::get('facebook_access_token');}}
-                
+                {{ Session::get('facebook_access_token') }}
+
                 <div class="title">Laravel</div>
             </div>
         </div>
