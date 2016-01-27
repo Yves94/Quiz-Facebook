@@ -38,6 +38,7 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
     if (! $token) {
         Route::get('login','Auth\AuthController@facebook');
     }
+    Session::put('facebook_access_token', (string) $token);
      return view('welcome');
 });  
 
