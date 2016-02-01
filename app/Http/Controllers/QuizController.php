@@ -19,6 +19,12 @@ class QuizController extends Controller
 
     }
 
+    public function home() {
+        $data['quiz'] = Quiz::all();
+        
+        return view('welcome', $data);
+    }
+
     public function listQuizzes()
     {
         $quizzes = Quiz::with('users')->where(['id_quiz' => 1])->get()->first();
