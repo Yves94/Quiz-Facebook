@@ -24,11 +24,16 @@ class QuizController extends Controller
             $data['quizzes'] = \App\Quiz::with('creator')->paginate(1);
         }
 
-        return view('BackOffice.ListQuizzes', $data);
-
     }
 
-        public function addQuiz(Request $request)
+    public function home() {
+        $data['quiz'] = Quiz::all();
+        
+        return view('welcome', $data);
+    }
+
+
+    public function addQuiz(Request $request)
     {
         $quiz = new Quiz();
 

@@ -10,10 +10,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
 use App\User;
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+
+Route::get('/', 'QuizController@home');
+
+
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'quiz'], function () {
         Route::match(array('GET', 'POST'),'list', 'BackOffice\QuizController@listQuizzes');
