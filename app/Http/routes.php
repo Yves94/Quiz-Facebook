@@ -16,7 +16,7 @@ use App\User;
     return view('welcome');
 });*/
 
-Route::get('/', 'QuizController@home');
+//Route::get('/', 'QuizController@home');
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -50,7 +50,7 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
         $me = $response->getGraphUser();
         Session::put('name',(string) $me->getName());
         Session::put('facebook_access_token', (string) $token);
-     return view('welcome');
+        Route::get('/','QuizController@home');
 });  
 
 

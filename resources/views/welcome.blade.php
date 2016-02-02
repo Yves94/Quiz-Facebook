@@ -52,27 +52,8 @@
                             <!-- Info sur le quiz -->
                             <h3>{{ $qiz->title }} <span class="badge" style="background-color: {{ $qiz->color }}; color: #fff;">{{ $qiz->nb_questions }} questions</span></h3>
                             <p>Créé le : {{ date('d/m/Y', strtotime($qiz->start_date)) }}</p>
-                            <p>{{ $qiz->summary }}</p>
+                            <p>{{ $qiz->summary }}</p>     
 
-<<<<<<< HEAD
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                {{ Session::get('name') }}
-                {{ Session::get('facebook_access_token') }}
-
-                <div class="title">Laravel</div>
-            </div>
-        </div>
-    </body>
-   
-=======
-                            
                             <!-- Bouton renvoyant vers le quiz -->
                             <a href="{{ $qiz->slug }}" class="btn btn-default" role="button" style="width: 100%; background-color: {{ $qiz->color }}; color: #fff;"><b>Jouer</b></a>
                         </div>
@@ -81,7 +62,7 @@
             @endforeach
         </div>
     </div>
-
+        {{ Session::get('name') }}
+        {{ Session::get('facebook_access_token') }}
 </body>
->>>>>>> heroku/FrontQuiz
 </html>
