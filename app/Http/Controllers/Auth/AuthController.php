@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-namespace App\Http\Controllers\backoffice;
 use App\User;
 use App\Role;
 use Validator;
@@ -88,6 +87,6 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        return redirect()->action('QuizController@home');
+        return redirect()->action('BackOffice\QuizController@home');
     }
 }
