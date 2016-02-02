@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Socialite;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 class AuthController extends Controller
 {
     /*
@@ -87,6 +88,6 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        return redirect('/');
+        return Redirect::route('login');
     }
 }
