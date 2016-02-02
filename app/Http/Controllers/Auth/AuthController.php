@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Socialite;
 use Auth;
-use Illuminate\Http\RedirectResponse;
+use Redirect;
 class AuthController extends Controller
 {
     /*
