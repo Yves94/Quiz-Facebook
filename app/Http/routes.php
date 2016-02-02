@@ -45,6 +45,7 @@ Route::match(array('GET', 'POST'),'login',
     'uses' => 'Auth\AuthController@login',
     'as' => 'login'
 ]);
+
 Route::match(array('GET', 'POST'),'callback',[
 
     'uses' => 'Auth\AuthController@callback',

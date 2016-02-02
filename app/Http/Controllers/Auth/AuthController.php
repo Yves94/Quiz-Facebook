@@ -71,6 +71,7 @@ class AuthController extends Controller
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
+        dd($loginUrl);
         return Redirect::to($loginUrl);
     }
 
@@ -88,6 +89,11 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        return redirect()->route('home');
+        $helper = Facebok::getRedirectLoginHelper();
+    // @TODO This is going away soon
+        $facebookClient = Facebok::getClient();
+        $accessToken = $helper->getAccessToken($facebookClient);
+        dd($accessToken);
+
     }
 }
