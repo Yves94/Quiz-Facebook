@@ -88,7 +88,6 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        //return Redirect::to('/');
-        return view('welcome');
+        return redirect()->action('QuizController@home');
     }
 }
