@@ -36,13 +36,14 @@ Route::group(['prefix' => 'admin'], function () {
 Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getCanvasHelper()->getAccessToken();
+        dd($token);
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         // Failed to obtain access token
         dd($e->getMessage());
     }
 
     // $token will be null if the user hasn't authenticated your app yet
-    if (! $token) {
+    if (!$token) {
         Route::get('login','Auth\AuthController@facebook');
     }
     $fb->setDefaultAccessToken($token);
