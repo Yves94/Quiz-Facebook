@@ -55,9 +55,25 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
-        dd($loginUrl);
+        return Redirect::to($loginUrl);
     }
 });  
+Route::get('callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+    try {
+        $token = $fb->getAccessTokenFromRedirect();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // Failed to obtain access token
+        dd($e->getMessage());
+    }
 
-Route::get('callback', 'Auth\AuthController@callback');
+    // $token will be null if the user denied the request
+    if (! $token) {
+        // User denied the request
+    }
+    else{
+        
+        dd($token);
+    }
+});
+/*Route::get('callback', 'Auth\AuthController@callback');*/
 
