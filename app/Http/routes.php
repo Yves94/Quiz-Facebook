@@ -42,7 +42,7 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
     }
 
     // $token will be null if the user hasn't authenticated your app yet
-    if (!$token) {
+    if ($token == null ) {
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback';
