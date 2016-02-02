@@ -12,7 +12,7 @@
         <nav class="navbar" style="font-size: 20px; margin-bottom: -21px;">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#" style="font-size: 30px;">Q'IZ</a>
+                    <a class="navbar-brand" href="/" style="font-size: 30px;">Q'IZ</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="#">Classement</a></li>
@@ -20,8 +20,8 @@
                 </ul>
                 <!-- Bouton de droite -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-flash"></span> Ratio : 0.91</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                    <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-flash"></span> Ratio : 0.91</a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span></a></li>
                 </ul>
                 <!-- Champ de recherche -->
                 <form class="navbar-form navbar-right" role="search">
@@ -37,7 +37,7 @@
         <div class="row">
             <!-- Affichage de tous les quiz -->
             @foreach ($quiz as $qiz)
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="thumbnail" style="padding:0;">
                     <!-- Barre de progression -->
                             <div class="progress" style="padding: 0; border:none;">
@@ -51,7 +51,7 @@
                         <div class="caption">
                             <!-- Info sur le quiz -->
                             <h3>{{ $qiz->title }} <span class="badge" style="background-color: {{ $qiz->color }}; color: #fff;">{{ $qiz->nb_questions }} questions</span></h3>
-                            <p>Créé le : {{ $qiz->start_date }}</p>
+                            <p>Créé le : {{ date('d/m/Y', strtotime($qiz->start_date)) }}</p>
                             <p>{{ $qiz->summary }}</p>
 
                             
