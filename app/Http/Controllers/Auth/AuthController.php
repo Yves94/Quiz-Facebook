@@ -7,9 +7,10 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Socialite;
+use Facebook;
 use Auth;
 use Redirect;
+
 class AuthController extends Controller
 {
     /*
@@ -64,13 +65,13 @@ class AuthController extends Controller
         ]);
     }
 
-    public function facebook()
+    public function login()
     {
-       return Socialite::driver('facebook')->fields([
-                'first_name', 'last_name', 'email', 'gender', 'birthday','age_range'
-            ])->scopes([
-                'email', 'user_birthday'
-            ])->redirect();
+       $helper = Facebook::getRedirectLoginHelper();
+        $permissions = ['email']; // optional
+        $callback = 'https://quizfb.herokuapp.com/callback/';
+        $loginUrl = $helper->getLoginUrl($callback, $permissions);
+        return Redirect::to($loginUrl);
     }
 
     public function callback()

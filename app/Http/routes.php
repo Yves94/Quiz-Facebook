@@ -33,7 +33,16 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
-Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/', [
+    'uses' => 'QuizController@home',
+    'as' => 'home',
+    'middleware' => 'tokenFB'
+]);
+Route::get('login','Auth\AuthController@login');
+
+
+
+/*Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb->getCanvasHelper()->getAccessToken();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
@@ -50,14 +59,14 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
         Session::put('facebook_access_token', (string) $token);
         Route::get('/','QuizController@home');    
     }
-    /*else {
+    else {
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
         return Redirect::to($loginUrl);
-    }*/
-});  
+    }
+}); */ 
 
 /*Route::get('callback', 'Auth\AuthController@callback');*/
 

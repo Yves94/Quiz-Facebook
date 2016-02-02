@@ -31,6 +31,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'role' => Zizaco\entrust\src\Entrust\Middleware\EntrustRole::class,
         'permission' => Zizaco\entrust\src\Entrust\Middleware\EntrustPermission::class,
-        'ability' => Zizaco\entrust\src\Entrust\Middleware\EntrustAbility::class
+        'ability' => Zizaco\entrust\src\Entrust\Middleware\EntrustAbility::class,
+        'tokenFB' => \App\Http\Middleware\VerifTokenFacebook::class
     ];
 }
