@@ -83,8 +83,8 @@ class AuthController extends Controller
         'email'         => $user->user['email'],
         'gender'        => ($user->user['gender']) == 'male' ? 0 : 1,
         'birthday'      => $user->user['birthday'],
-        'age_rangs'     => $user->user['age_range']['min']*/
-        ]);
+        'age_rangs'     => $user->user['age_range']['min']
+        ]);*/
 
         //Auth::login($current_user,true);//Log le user
         return redirect()->route('/');
