@@ -66,7 +66,7 @@ Route::match(array('GET', 'POST'),'home', function(SammyK\LaravelFacebookSdk\Lar
         // Failed to obtain access token
         dd($e->getMessage());
     }
-
+    dd($token);
     // $token will be null if the user hasn't authenticated your app yet
     if (isset($token)) {
         $fb->setDefaultAccessToken($token);
