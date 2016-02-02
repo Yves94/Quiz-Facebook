@@ -29,7 +29,13 @@ class VerifTokenFacebook
         }
 
         if(isset($token)) {
-             return $next($request);
+        
+            $fb->setDefaultAccessToken($token);
+            $response = $fb->get('/me');
+            $me = $response->getGraphUser();
+            Session::put('name',(string) $me->getName());
+            Session::put('facebook_access_token', (string) $token);
+            return $next($request);
         }
         else {
             redirect()->guest('/login');
