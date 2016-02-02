@@ -87,6 +87,6 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        return redirect()->action('BackOffice\QuizController.home');
+        return Redirect::action('BackOffice\QuizController@home');
     }
 }
