@@ -80,4 +80,3 @@ Route::match(array('GET', 'POST'),'home', function(SammyK\LaravelFacebookSdk\Lar
 
 Route::get('callback', 'Auth\AuthController@callback');
 
-});
