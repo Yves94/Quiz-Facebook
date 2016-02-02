@@ -36,7 +36,7 @@
 
     <div class="row">
             <!-- Affichage de tous les quiz -->
-            @if(isset $quiz)
+            @if(isset($quiz))
                 @foreach ($quiz as $qiz)
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="thumbnail" style="padding:0;">
