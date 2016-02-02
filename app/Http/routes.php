@@ -58,22 +58,16 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
         return Redirect::to($loginUrl);
     }
 });  
-Route::get('callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('/facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
-        $token = $fb->getAccessTokenFromRedirect();
+        $token = $fb
+            ->getRedirectLoginHelper()
+            ->getAccessToken();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         // Failed to obtain access token
         dd($e->getMessage());
     }
-
-    // $token will be null if the user denied the request
-    if (! $token) {
-        // User denied the request
-    }
-    else{
-        
-        dd($token);
-    }
+    dd($token);
 });
 /*Route::get('callback', 'Auth\AuthController@callback');*/
 
