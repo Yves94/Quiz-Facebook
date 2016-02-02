@@ -29,7 +29,7 @@ class QuizController extends Controller
     public function home() {
         $data['quiz'] = Quiz::all();
         
-        return view('welcome', $data);
+        return view('home', $data);
     }
 
 
