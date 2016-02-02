@@ -59,6 +59,24 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
     }
 });  
 
+Route::match(array('GET', 'POST'),'home', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+    try {
+        $token = $fb->getCanvasHelper()->getAccessToken();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        // Failed to obtain access token
+        dd($e->getMessage());
+    }
+
+    // $token will be null if the user hasn't authenticated your app yet
+    if (isset($token)) {
+        $fb->setDefaultAccessToken($token);
+        $response = $fb->get('/me');
+        $me = $response->getGraphUser();
+        Session::put('name',(string) $me->getName());
+        Session::put('facebook_access_token', (string) $token);
+        Route::get('home','QuizController@home');    
+    }
+});  
 
 Route::get('callback', 'Auth\AuthController@callback');
 
