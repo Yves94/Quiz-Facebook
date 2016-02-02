@@ -7,7 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Facebook;
+use SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
 use Auth;
 use Redirect;
 
@@ -29,6 +29,7 @@ class AuthController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         //$this->middleware('guest', ['except' => 'getLogout']);
@@ -64,9 +65,8 @@ class AuthController extends Controller
         ]);
     }
 
-    public function login()
+    public function login(LaravelFacebookSdk $fb)
     {
-        $fb = App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
@@ -75,7 +75,7 @@ class AuthController extends Controller
         return Redirect::to($loginUrl);
     }
 
-    public function callback()
+    public function callback(LaravelFacebookSdk $fb)
     {
 
         //create or update current_user
@@ -89,7 +89,6 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        $fb = App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
         $token = $fb->getRedirectLoginHelper()->getAccessToken();
     // @TODO This is going away soon
         
