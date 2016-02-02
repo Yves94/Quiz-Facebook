@@ -58,7 +58,7 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
         return Redirect::to($loginUrl);
     }
 });  
-Route::get('/facebook/callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
+Route::get('callback', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
     try {
         $token = $fb
             ->getRedirectLoginHelper()
