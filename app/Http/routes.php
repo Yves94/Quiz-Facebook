@@ -35,13 +35,21 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::match(array('GET', 'POST'),'/',
 [
-    'uses' => 'QuizController@home',
+    'uses' => 'BackOffice\QuizController@home',
     'as' => 'home',
     'middleware' => 'tokenFB'
 ]);
 
-Route::match(array('GET', 'POST'),'login', 'Auth\AuthController@login');
-Route::match(array('GET', 'POST'),'callback', 'Auth\AuthController@callback');
+Route::match(array('GET', 'POST'),'login',
+[
+    'uses' => 'Auth\AuthController@login',
+    'as' => 'login'
+]);
+Route::match(array('GET', 'POST'),'callback',[
+
+    'uses' => 'Auth\AuthController@callback',
+    'as' => 'callback'
+]);
 
 
 /*Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {

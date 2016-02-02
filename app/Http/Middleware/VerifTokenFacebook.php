@@ -38,7 +38,7 @@ class VerifTokenFacebook
             return $next($request);
         }
         else {
-            redirect()->guest('/login');
+           return  redirect()->route('login');
         }
 
     }
