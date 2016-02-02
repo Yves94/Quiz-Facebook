@@ -39,7 +39,7 @@ Route::get('/', [
     'middleware' => 'tokenFB'
 ]);
 Route::get('login','Auth\AuthController@login');
-
+Route::get('callback', 'Auth\AuthController@callback');
 
 
 /*Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
@@ -68,5 +68,5 @@ Route::get('login','Auth\AuthController@login');
     }
 }); */ 
 
-/*Route::get('callback', 'Auth\AuthController@callback');*/
+
 
