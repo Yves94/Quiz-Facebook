@@ -53,7 +53,7 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
     else {
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
-        $callback = 'https://quizfb.herokuapp.com/callback';
+        $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
         return Redirect::to($loginUrl);
     }
