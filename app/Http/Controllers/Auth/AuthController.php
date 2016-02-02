@@ -23,7 +23,6 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
-    $helper;
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
     /**
      * Create a new authentication controller instance.
@@ -67,7 +66,7 @@ class AuthController extends Controller
 
     public function login()
     {
-       $helper = Facebook::getRedirectLoginHelper();
+        $helper = Facebook::getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
@@ -89,11 +88,10 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        //$helper = Facebook::getRedirectLoginHelper();
+        $token = Facebook::getRedirectLoginHelper()->getAccessToken();
     // @TODO This is going away soon
-        $facebookClient = Facebook::getClient();
-        $accessToken = $helper->getAccessToken($facebookClient);
-        dd($accessToken);
+        
+        dd($token);
 
     }
 }
