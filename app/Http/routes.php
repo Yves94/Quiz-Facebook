@@ -80,8 +80,4 @@ Route::match(array('GET', 'POST'),'home', function(SammyK\LaravelFacebookSdk\Lar
 
 Route::get('callback', 'Auth\AuthController@callback');
 
-Route::group(['middleware' => ['auth']], function(){
-	Route::get('home',array('as'=>'home', 'uses'=>function(){
-	return view('home');
-	}));
 });
