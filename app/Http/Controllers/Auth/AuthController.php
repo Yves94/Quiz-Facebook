@@ -75,21 +75,18 @@ class AuthController extends Controller
 
     public function callback()
     {
-        //get the user information with facebook's driver
-        $user = Socialite::driver('facebook')->fields(['first_name', 'last_name', 'email', 'gender', 'birthday','age_range'])->user();
 
         //create or update current_user
-        $current_user = User::updateOrCreate(['email' =>$user->user['email']],[
+       /* $current_user = User::updateOrCreate(['email' =>$user->user['email']],[
         'last_name'     => $user->user['last_name'],
         'first_name'    => $user->user['first_name'],
         'email'         => $user->user['email'],
         'gender'        => ($user->user['gender']) == 'male' ? 0 : 1,
         'birthday'      => $user->user['birthday'],
-        'age_rangs'     => $user->user['age_range']['min']
+        'age_rangs'     => $user->user['age_range']['min']*/
         ]);
 
-        Auth::login($current_user,true);//Log le user
-
-        return redirect()->route('home');
+        //Auth::login($current_user,true);//Log le user
+        return redirect()->route('/');
     }
 }

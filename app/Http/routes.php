@@ -44,18 +44,21 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
 
     // $token will be null if the user hasn't authenticated your app yet
     if (!$token) {
-        Route::get('login','Auth\AuthController@facebook');
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['email']; // optional
+        $callback = 'https://quizfb.herokuapp.com/callback';
+        $loginUrl = $helper->getLoginUrl($callback, $permissions);
     }
     $fb->setDefaultAccessToken($token);
         $response = $fb->get('/me');
         $me = $response->getGraphUser();
         Session::put('name',(string) $me->getName());
         Session::put('facebook_access_token', (string) $token);
-        /*Route::get('/','QuizController@home');*/
+        Route::get('/','QuizController@home');
 });  
 
 
-//Route::get('callback', 'Auth\AuthController@callback');
+Route::get('callback', 'Auth\AuthController@callback');
 
 Route::group(['middleware' => ['auth']], function(){
 	Route::get('home',array('as'=>'home', 'uses'=>function(){
