@@ -31,7 +31,7 @@ class VerifTokenFacebook
         if(isset($token)) {
         
             Facebook::setDefaultAccessToken($token);
-            $response = $fb->get('/me');
+            $response = Facebook::get('/me');
             $me = $response->getGraphUser();
             Session::put('name',(string) $me->getName());
             Session::put('facebook_access_token', (string) $token);
