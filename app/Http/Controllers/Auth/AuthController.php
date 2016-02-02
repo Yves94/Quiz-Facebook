@@ -91,7 +91,7 @@ class AuthController extends Controller
         //Auth::login($current_user,true);//Log le user
         $helper = Facebok::getRedirectLoginHelper();
     // @TODO This is going away soon
-        $facebookClient = Facebok::getClient();
+        $facebookClient = Facebook::getClient();
         $accessToken = $helper->getAccessToken($facebookClient);
         dd($accessToken);
 
