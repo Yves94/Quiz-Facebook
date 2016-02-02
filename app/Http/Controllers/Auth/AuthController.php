@@ -31,7 +31,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        //$this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
@@ -66,7 +66,8 @@ class AuthController extends Controller
 
     public function login()
     {
-        $helper = Facebook::getRedirectLoginHelper();
+        $fb = App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
+        $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
@@ -88,7 +89,8 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        $token = Facebook::getRedirectLoginHelper()->getAccessToken();
+        $fb = App::make('SammyK\LaravelFacebookSdk\LaravelFacebookSdk');
+        $token = $fb->getRedirectLoginHelper()->getAccessToken();
     // @TODO This is going away soon
         
         dd($token);
