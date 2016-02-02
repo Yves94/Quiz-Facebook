@@ -42,7 +42,7 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
     }
 
     // $token will be null if the user hasn't authenticated your app yet
-    if (isset($token)){
+    if (isset($token)) {
         $fb->setDefaultAccessToken($token);
         $response = $fb->get('/me');
         $me = $response->getGraphUser();
@@ -50,11 +50,12 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
         Session::put('facebook_access_token', (string) $token);
         Route::get('/','QuizController@home');    
     }
-    else{
-         $helper = $fb->getRedirectLoginHelper();
+    else {
+        $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
+        return Redirect::to($loginUrl);
     }
 });  
 
