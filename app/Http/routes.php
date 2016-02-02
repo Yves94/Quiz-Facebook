@@ -50,24 +50,14 @@ Route::match(array('GET', 'POST'),'/', function(SammyK\LaravelFacebookSdk\Larave
         Session::put('facebook_access_token', (string) $token);
         Route::get('/','QuizController@home');    
     }
-    else {
+    /*else {
         $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
         return Redirect::to($loginUrl);
-    }
+    }*/
 });  
-Route::get('callback/', function(SammyK\LaravelFacebookSdk\LaravelFacebookSdk $fb) {
-    try {
-        $token = $fb
-            ->getRedirectLoginHelper()
-            ->getAccessToken();
-    } catch (Facebook\Exceptions\FacebookSDKException $e) {
-        // Failed to obtain access token
-        dd($e->getMessage());
-    }
-    dd($token);
-});
+
 /*Route::get('callback', 'Auth\AuthController@callback');*/
 
