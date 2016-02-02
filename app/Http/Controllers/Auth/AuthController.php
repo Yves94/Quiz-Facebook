@@ -88,6 +88,6 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        return Redirect::route('login');
+        return Redirect::route('/');
     }
 }
