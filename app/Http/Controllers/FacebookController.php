@@ -60,7 +60,7 @@ class FacebookController extends Controller
 
        $facebook_user = $response->getGraphUser();
 
-       $user = App\User::createOrUpdateGraphNode($facebook_user);
+       $user = User::createOrUpdateGraphNode($facebook_user);
 
     }
 }
