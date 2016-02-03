@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Facebook;
 use Session;
+use User;
 class VerifTokenFacebook
 {
    
