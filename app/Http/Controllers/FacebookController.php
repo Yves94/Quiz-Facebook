@@ -40,7 +40,24 @@ class FacebookController extends Controller
         if($accessToken) {
 
             Session::put('facebook_access_token', (string) $accessToken);
+            getUserInfo();
             return redirect()->route('home');
         }
+    }
+
+    public function getUserInfo(LaravelFacebookSdk $fbSdk)
+    {
+        try {
+
+           $response = $fb->get('/me?fields=id,name,gender,age_range,email,birthday');
+
+       } catch (Facebook\Exceptions\FacebookSDKException $e) {
+
+           dd($e->getMessage());
+       }
+
+       $facebook_user = $response->getGraphUser();
+
+       dd($facebook_user);
     }
 }
