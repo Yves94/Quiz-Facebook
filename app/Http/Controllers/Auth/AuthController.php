@@ -11,6 +11,7 @@ use SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
 use Auth;
 use Redirect;
 use Session;
+use Cookie;
 class AuthController extends Controller
 {
     /*
@@ -71,7 +72,7 @@ class AuthController extends Controller
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
-        die(Session::all());
+        //dd(Session::all());
         return Redirect::to($loginUrl);
     }
 
@@ -87,7 +88,7 @@ class AuthController extends Controller
         'birthday'      => $user->user['birthday'],
         'age_rangs'     => $user->user['age_range']['min']
         ]);*/
-        die(Session::all());
+        dd(Cookie::get());
         //Auth::login($current_user,true);//Log le user
         $token = $fb->getAccessTokenFromRedirect();
     // @TODO This is going away soon
