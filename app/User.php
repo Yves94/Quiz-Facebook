@@ -5,6 +5,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use SammyK\LaravelFacebookSdk\SyncableGraphNodeTrait;
 /* si probleme test extends eloquant*/
 class User extends  Model implements AuthenticatableContract
 {
