@@ -19,7 +19,7 @@ class VerifTokenFacebook
     {
 
         try {
-            if(isset(Session::has('facebook_access_token')))
+            if(Session::has('facebook_access_token') != null)
             {
                 $token = Session::get('facebook_access_token');
             }
