@@ -40,7 +40,7 @@ class FacebookController extends Controller
         if($accessToken) {
 
             Session::put('facebook_access_token', (string) $accessToken);
-            $this->getUserInfo();
+            $this->getUserInfo($fbSdk);
             return redirect()->route('home');
         }
     }
