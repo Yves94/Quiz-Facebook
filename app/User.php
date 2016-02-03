@@ -54,7 +54,7 @@ class User extends  Model implements AuthenticatableContract
 	    //attach Role to user   
         $role = new Role();
         $role = Role::where('name','=','User')->first();
-        $current_user->attachRole($role);
+        $instance->attachRole($role);
     
 	    return $instance;
 	}
