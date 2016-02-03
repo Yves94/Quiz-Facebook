@@ -97,8 +97,13 @@ class AuthController extends Controller
         /*$facebookClient = $fb->getClient();
          $accessToken = $helper->getAccessToken($facebookClient);*/
     // @TODO This is going away soon
-        
-        dd($helper);
+         // Obtain an access token.
+    try {
+        $token = $fb->getAccessTokenFromRedirect();
+    } catch (Facebook\Exceptions\FacebookSDKException $e) {
+        dd($e->getMessage());
+    }
+        dd($token);
 
     }
 }
