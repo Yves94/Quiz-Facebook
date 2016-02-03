@@ -70,6 +70,6 @@ class FacebookController extends Controller
         'birthday'      =>  $facebook_user->getBirthDay()
         ]);
 
-        Auth::login($user);
+        Auth::login($current_user);
     }
 }
