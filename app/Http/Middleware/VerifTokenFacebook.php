@@ -40,7 +40,7 @@ class VerifTokenFacebook
             Facebook::setDefaultAccessToken($token);
             $response = Facebook::get('/me?fields=id,name,gender,age_range,email,birthday');
             $me = $response->getGraphUser();
-            dd($me->GraphUser);
+            dd($me->getName());
             $current_user = User::updateOrCreate(['email' =>$me->item['email']],[
             'last_name'     => $me->item['last_name'],
             'first_name'    => $me->item['first_name'],
