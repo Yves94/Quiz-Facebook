@@ -65,7 +65,7 @@ class FacebookController extends Controller
         'first_name'    => $facebook_user->getFirstName(),
         'email'         => $facebook_user->getEmail(),
         'gender'        => ($facebook_user->getGender()) == 'male' ? 0 : 1,
-        'birthday'      => $user->$facebook_user->getBirthDay()
+        'birthday'      =>  $facebook_user->getBirthDay()
         ]);
 
 
