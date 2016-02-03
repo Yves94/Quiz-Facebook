@@ -89,7 +89,7 @@ class AuthController extends Controller
         'age_rangs'     => $user->user['age_range']['min']
         ]);*/
 
-       dd(Session::all());
+       
         //Auth::login($current_user,true);//Log le user
         $token = $fb->getAccessTokenFromRedirect();
     // @TODO This is going away soon
