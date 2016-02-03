@@ -33,23 +33,9 @@ class User extends  Model implements AuthenticatableContract
     public static  function updateOrCreate(array $attributes, array $values = [])
 	{
 		$user = new User();
-		$instance = $user->firstOrNew($attributes);
-	    	
+		$instance = $user->firstOrNew($attributes);  	
 	    $instance->fill($values);
-
 	    $instance->save();
-
-        $owner = new Role();
-        $owner->name         = 'User';
-        $owner->display_name = ' user of application'; // optional
-        $owner->description  = ''; // optional
-        $owner->save();
-
-         $owner = new Role();
-        $owner->name         = 'Admin';
-        $owner->display_name = ' user of application'; // optional
-        $owner->description  = ''; // optional
-        $owner->save();
 
 	    //attach Role to user   
         $role = new Role();
