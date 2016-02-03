@@ -5,7 +5,6 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use SammyK\LaravelFacebookSdk\SyncableGraphNodeTrait;
 
 /* si probleme test extends eloquant*/
 class User extends  Model implements AuthenticatableContract
@@ -13,15 +12,11 @@ class User extends  Model implements AuthenticatableContract
 
 	use EntrustUserTrait; //add this trait to your user model
 	use Authenticatable;
-    use SyncableGraphNodeTrait;
-	protected $primaryKey = 'id_user';//defini the primary key 
+
+	protected $primaryKey = 'id_user'; //defini the primary key 
  	protected $table = 'users';
 
     protected $fillable=['last_name','first_name','email','age_rangs','birthday','gender'];
-
-     protected static $facebook_field_aliases = [
-        'id' =>'id_user'
-    ];
 
   	protected $hidden = ['password', 'remember_token'];
     // Relation 

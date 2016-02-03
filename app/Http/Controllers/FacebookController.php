@@ -60,7 +60,14 @@ class FacebookController extends Controller
 
        $facebook_user = $response->getGraphUser();
 
-       $user = User::createOrUpdateGraphNode($facebook_user);
+        $current_user = User::updateOrCreate(['email' =>$facebook_user->getEmail()],[
+        'last_name'     => $facebook_user->getLastName(),
+        'first_name'    => $facebook_user->getFirstName(),
+        'email'         => $facebook_user->getEmail(),
+        'gender'        => ($facebook_user->getGender()) == 'male' ? 0 : 1,
+        'birthday'      => $user->$facebook_user->getBirthDay()
+        ]);
+
 
     }
 }
