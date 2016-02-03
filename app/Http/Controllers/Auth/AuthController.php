@@ -99,11 +99,12 @@ class AuthController extends Controller
     // @TODO This is going away soon
          // Obtain an access token.
     try {
-        $token = $fb->getAccessTokenFromRedirect();
+        $accessToken = $helper->getAccessToken('https://quizfb.herokuapp.com/callback/');
+        //$token = $fb->getAccessTokenFromRedirect();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         dd($e->getMessage());
     }
-        dd($token);
+        dd($accessToken);
 
     }
 }
