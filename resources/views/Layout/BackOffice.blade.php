@@ -35,7 +35,19 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown {{ Route::current()->getName() == "admin_quiz_list" || Route::current()->getName() == "admin_quiz_add" ? "active" : "" }}">
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false">Quiz <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="{{ Route::current()->getName() == "admin_quiz_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/quiz/list">Liste</a></li>
+                            <li class="{{ Route::current()->getName() == "admin_quiz_add" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/quiz/add">Ajouter</a></li>
+                        </ul>
+                    </li>
+                    <li class="{{ Route::current()->getName() == "admin_question_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/question/list">Question</a></li>
+                    <li class="{{ Route::current()->getName() == "admin_category_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/category/list">Category</a></li>
+                    <li class="{{ Route::current()->getName() == "admin_answer_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/answer/list">Answer</a></li>
+                    <li class="{{ Route::current()->getName() == "admin_user_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/user/list">user</a></li>
+                    <li class="{{ Route::current()->getName() == "admin_jocker_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/joker/list">joker</a></li>
+
                     <li><a href="#">Link</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -57,7 +69,7 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                    <li><a href="#">link</a></li>
                 </ul>
             </div>
         </div>
@@ -77,6 +89,20 @@
     });
 </script>
 <div class="container">
+    @if (Session::has("flash_message"))
+       <div class="alert alert-success">
+           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+           {{ Session::get("flash_message") }}
+       </div>
+    @endif
+
+        @if( $errors->any())
+            <ul class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
     @yield('content')
 </div>
 

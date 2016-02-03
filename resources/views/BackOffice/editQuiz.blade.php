@@ -17,10 +17,6 @@
                         {!! Form::label('title', 'Title') !!}
                         {!! Form::text('title',$quiz->title, ['class' => 'form-control']) !!}
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('slug','Slug') !!}
-                        {!! Form::text('slug',$quiz->slug, ['class' => 'form-control']) !!}
-                    </div>
                 <div class="form-group">
                     {!! Form::label('nb_questions','Nombre de question') !!}
                     {!! Form::text('nb_questions',$quiz->nb_questions, ['class' => 'form-control']) !!}
@@ -44,9 +40,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {!! Form::label('end_start','Date de fin') !!}
+                    {!! Form::label('end_date','Date de fin') !!}
                     <div class='input-group date datepicker'>
-                        {!! Form::text('end_start',\DateTime::createFromFormat('Y-m-d', $quiz->end_start)->format('d/m/Y'), ['class' => 'form-control']) !!}
+                        {!! Form::text('end_date',\DateTime::createFromFormat('Y-m-d', $quiz->end_date)->format('d/m/Y'), ['class' => 'form-control']) !!}
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
