@@ -38,13 +38,14 @@ class FacebookController extends Controller
         }
 
         if($accessToken) {
-            
+
             $fbSdk->setDefaultAccessToken($accessToken);
             Session::put('facebook_access_token', (string) $accessToken);
             $this->getUserInfo($fbSdk);
             return redirect()->route('home');
         }
     }
+
 
     public function getUserInfo(LaravelFacebookSdk $fbSdk)
     {
@@ -58,7 +59,5 @@ class FacebookController extends Controller
        }
 
        $facebook_user = $response->getGraphUser();
-
-       dd($facebook_user);
     }
 }

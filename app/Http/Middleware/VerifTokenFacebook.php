@@ -36,7 +36,7 @@ class VerifTokenFacebook
 
         if(isset($token)) {
         
-            Facebook::setDefaultAccessToken($token);
+            /*Facebook::setDefaultAccessToken($token);
             $response = Facebook::get('/me?fields=id,name,gender,age_range,email,birthday');
             $me = $response->getGraphUser();
             dd($me->getName());
@@ -48,7 +48,7 @@ class VerifTokenFacebook
             'birthday'      => $me->item['birthday'],
             'age_rangs'     => $me->item['age_range']['min']
             ]);
-             dd($current_user);
+             dd($current_user);*/
             Session::put('name',(string) $me->getName());
             Session::put('facebook_access_token', (string) $token);
             return $next($request);
