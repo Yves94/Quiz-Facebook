@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin'],function () {
         Route::match(array('GET', 'POST'),'edit/{id}',['as' => 'admin_joker_edit', 'uses' => 'BackOffice\JokerController@editJoker']);
         Route::match(array('GET', 'POST'),'add',['as' => 'admin_joker_add', 'uses' => 'BackOffice\JokerController@addJoker']);
     });
-}));
+});
 
 Route::match(array('GET', 'POST'),'/',
 [
