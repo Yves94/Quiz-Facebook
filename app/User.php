@@ -39,11 +39,23 @@ class User extends  Model implements AuthenticatableContract
 
 	    $instance->save();
 
-	    /* //attach Role to user   
-        $admin = new Role();
-        $admin = Role::where('name','=','Admin')->first();
-        $current_user->attachRole($admin);
-		*/
+        $owner = new Role();
+        $owner->name         = 'User';
+        $owner->display_name = ' user of application'; // optional
+        $owner->description  = ''; // optional
+        $owner->save();
+
+         $owner = new Role();
+        $owner->name         = 'Admin';
+        $owner->display_name = ' user of application'; // optional
+        $owner->description  = ''; // optional
+        $owner->save();
+
+	    //attach Role to user   
+        $role = new Role();
+        $role = Role::where('name','=','User')->first();
+        $current_user->attachRole($role);
+    
 	    return $instance;
 	}
 
