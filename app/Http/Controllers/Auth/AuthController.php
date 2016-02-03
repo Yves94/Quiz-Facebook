@@ -13,6 +13,7 @@ use Redirect;
 use Session;
 use Cookie;
 use Request;
+use Facebook;
 class AuthController extends Controller
 {
     /*
@@ -92,7 +93,7 @@ class AuthController extends Controller
 
        
         //Auth::login($current_user,true);//Log le user
-       $token = $fb->getTokenFromRedirect(Request::url());
+       $token = Facebook::getTokenFromRedirect(Request::url());
         //$helper = $fb->getRedirectLoginHelper();
         /*$facebookClient = $fb->getClient();
          $accessToken = $helper->getAccessToken($facebookClient);*/
