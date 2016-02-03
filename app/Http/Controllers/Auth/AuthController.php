@@ -89,10 +89,10 @@ class AuthController extends Controller
         ]);*/
 
         //Auth::login($current_user,true);//Log le user
-        //$token = $fb->getRedirectLoginHelper()->getAccessToken();
+        $token = $fb->getAccessTokenFromRedirect();
     // @TODO This is going away soon
         
-        dd("callback");
+        dd($token);
 
     }
 }
