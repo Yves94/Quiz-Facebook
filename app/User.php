@@ -18,7 +18,8 @@ class User extends  Model implements AuthenticatableContract
 
     protected $fillable=['last_name','first_name','email','birthday','gender'];
 
-  	protected $hidden = ['password', 'remember_token'];
+  	protected $hidden = ['remember_token'];
+    
     // Relation 
     public function quizs() {
         return $this->belongsToMany('App\Quiz');
