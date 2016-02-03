@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use SammyK\LaravelFacebookSdk\SyncableGraphNodeTrait;
+
 /* si probleme test extends eloquant*/
 class User extends  Model implements AuthenticatableContract
 {
@@ -17,6 +18,13 @@ class User extends  Model implements AuthenticatableContract
  	protected $table = 'users';
 
     protected $fillable=['last_name','first_name','email','age_rangs','birthday','gender'];
+
+     protected static $facebook_field_aliases = [
+        'name' => 'last_name',
+        'email' => 'email',
+        'birthday' => 'birthday',
+    ];
+    
   	protected $hidden = ['password', 'remember_token'];
     // Relation 
     public function quizs() {
