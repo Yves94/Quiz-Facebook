@@ -10,6 +10,7 @@ use App\Http\Requests\EditQuizRequest;
 use \App\Quiz as Quiz;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Auth;
 
 class QuizController extends Controller
 {
@@ -49,7 +50,7 @@ class QuizController extends Controller
             //dd($request->start_date,strtotime($request->start_date),$request->end_date, strtotime($request->end_date));
             $validator->after(function($validator) use ($request, &$quiz) {
                 // check date start < date end
-                if( strtotime(str_replace('/','_',$request->start_date)) < strtotime(str_replace('/','_',$request->end_date))) {
+                if( strtotime(str_replace('/','-',$request->start_date)) < strtotime(str_replace('/','-',$request->end_date))) {
                     $validator->errors()->add('Date','La date de début est superieur à la date de fin');
                 }
                 // save image
