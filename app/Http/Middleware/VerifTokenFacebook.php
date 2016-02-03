@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
 use Closure;
 use Facebook;
 use Session;
