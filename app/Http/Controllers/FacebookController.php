@@ -43,5 +43,4 @@ class FacebookController extends Controller
             return redirect()->route('home');
         }
     }
-    }
 }
