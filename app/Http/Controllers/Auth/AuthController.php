@@ -94,17 +94,14 @@ class AuthController extends Controller
        
         //Auth::login($current_user,true);//Log le user
         $helper = $fb->getRedirectLoginHelper();
-        /*$facebookClient = $fb->getClient();
-         $accessToken = $helper->getAccessToken($facebookClient);*/
-    // @TODO This is going away soon
-         // Obtain an access token.
     try {
         $accessToken = $helper->getAccessToken('https://quizfb.herokuapp.com/callback/');
-        //$token = $fb->getAccessTokenFromRedirect();
     } catch (Facebook\Exceptions\FacebookSDKException $e) {
         dd($e->getMessage());
     }
-        dd($accessToken);
-
+        if($accessToken){
+            
+            return redirect()->route('home');
+        }
     }
 }
