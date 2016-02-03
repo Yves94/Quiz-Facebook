@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('picture','Image') !!}
-                    {!! Form::file('picture',$quiz->picture, ['class' => 'form-control']) !!}
+                    {!! Form::files('picture',$quiz->picture, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('start_date','Date de début') !!}

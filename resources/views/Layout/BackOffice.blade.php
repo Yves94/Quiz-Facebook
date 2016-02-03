@@ -4,6 +4,7 @@
     <title>Quiz FB - @yield('title')</title>
 
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
@@ -20,8 +21,10 @@
 
 </head>
 <body>
-@section('sidebar')
+    @section('sidebar')
+   
     <nav class="navbar navbar-inverse">
+     <div class="container">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -38,71 +41,56 @@
                     <li class="dropdown {{ Route::current()->getName() == "admin_quiz_list" || Route::current()->getName() == "admin_quiz_add" ? "active" : "" }}">
                         <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false">Quiz <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li class="{{ Route::current()->getName() == "admin_quiz_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/quiz/list">Liste</a></li>
-                            <li class="{{ Route::current()->getName() == "admin_quiz_add" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/quiz/add">Ajouter</a></li>
+                            <li class="{{ Route::current()->getName() == "admin_quiz_list" ? "active" : "" }}">{!! Html::linkRoute('admin_quiz_list', 'Liste') !!}</li>
+                            <li class="{{ Route::current()->getName() == "admin_quiz_add" ? "active" : "" }}">{!! Html::linkRoute('admin_quiz_add', 'Ajouter') !!}</li>
                         </ul>
                     </li>
-                    <li class="{{ Route::current()->getName() == "admin_question_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/question/list">Question</a></li>
-                    <li class="{{ Route::current()->getName() == "admin_category_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/category/list">Category</a></li>
-                    <li class="{{ Route::current()->getName() == "admin_answer_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/answer/list">Answer</a></li>
-                    <li class="{{ Route::current()->getName() == "admin_user_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/user/list">user</a></li>
-                    <li class="{{ Route::current()->getName() == "admin_jocker_list" ? "active" : "" }}"><a href="http://localhost/quizfb/public/admin/joker/list">joker</a></li>
-
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
+                    <li class="{{ Route::current()->getName() == "admin_question_list" ? "active" : "" }}">{!! Html::linkRoute('admin_question_list', 'Questions') !!}</li>
+                    <li class="{{ Route::current()->getName() == "admin_category_list" ? "active" : "" }}">{!! Html::linkRoute('admin_category_list', 'Catégories') !!}</li>
+                    <li class="{{ Route::current()->getName() == "admin_user_list" ? "active" : "" }}">{!! Html::linkRoute('admin_user_list', 'Utilisateurs') !!}</li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">link</a></li>
+                    <li>
+                        <a href="">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            Paramètres
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
+         </div>
     </nav>
-@show
-<script>
-    $(document).ready(function() {
-        $('.datepicker').datetimepicker({
-            locale: 'fr',
+
+    @show
+    <script>
+        $(document).ready(function() {
+            $('.datepicker').datetimepicker({
+                locale: 'fr',
             //format: 'd/MM/YYYY'
             format: 'L'
         });
-        $('.multiselect').multiselect({
-            nonSelectedText: 'Selectionnez une valeur',
-            allSelectedText: 'Tout est sélectionné'
+            $('.multiselect').multiselect({
+                nonSelectedText: 'Selectionnez une valeur',
+                allSelectedText: 'Tout est sélectionné'
+            });
         });
-    });
-</script>
-<div class="container">
-    @if (Session::has("flash_message"))
-       <div class="alert alert-success">
-           <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-           {{ Session::get("flash_message") }}
-       </div>
-    @endif
+    </script>
+    <div class="container">
+        @if (Session::has("flash_message"))
+        <div class="alert alert-success">
+         <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+         {{ Session::get("flash_message") }}
+     </div>
+     @endif
 
-        @if( $errors->any())
-            <ul class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        @endif
+     @if( $errors->any())
+     <ul class="alert alert-danger">
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
     @yield('content')
 </div>
 
