@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\FrontOffice;
 
 use Illuminate\Http\Request;
-
+use App\Quiz as Quiz;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
