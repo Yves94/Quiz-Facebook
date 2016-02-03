@@ -42,13 +42,13 @@ Route::match(array('GET', 'POST'),'/',
 
 Route::match(array('GET', 'POST'),'login',
 [
-    'uses' => 'Auth\AuthController@login',
+    'uses' => 'FacebookController@loginWithFacebook',
     'as' => 'login'
 ]);
 
 Route::match(array('GET', 'POST'),'callback',[
 
-    'uses' => 'Auth\AuthController@callback',
+    'uses' => 'FacebookController@callbackFromFacebook',
     'as' => 'callback'
 ]);
 

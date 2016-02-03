@@ -68,28 +68,23 @@ class AuthController extends Controller
         ]);
     }
 
-    public function login(LaravelFacebookSdk $fb)
+    /*public function login(LaravelFacebookSdk $fb)
     {
-        $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['email']; // optional
-        $callback = 'https://quizfb.herokuapp.com/callback/';
-        $loginUrl = $helper->getLoginUrl($callback, $permissions);
-        Session::put('testtoken' ,Session::get('FBRLH_state'));
-        return Redirect::to($loginUrl);
+       
     }
 
     public function callback(LaravelFacebookSdk $fb)
     {
 
         //create or update current_user
-       /* $current_user = User::updateOrCreate(['email' =>$user->user['email']],[
+       $current_user = User::updateOrCreate(['email' =>$user->user['email']],[
         'last_name'     => $user->user['last_name'],
         'first_name'    => $user->user['first_name'],
         'email'         => $user->user['email'],
         'gender'        => ($user->user['gender']) == 'male' ? 0 : 1,
         'birthday'      => $user->user['birthday'],
         'age_rangs'     => $user->user['age_range']['min']
-        ]);*/
+        ]);
 
        
         //Auth::login($current_user,true);//Log le user
@@ -103,5 +98,5 @@ class AuthController extends Controller
             Session::put('facebook_access_token', (string) $accessToken);
             return redirect()->route('home');
         }
-    }
+    }*/
 }
