@@ -129,11 +129,12 @@ return [
         'available'             => 'Disponible',
         'size'                  => 'Taille',
         'start_date'            => 'Date de d&aecute;but',
-        'end_start'             => 'Date de fin',
+        'end_date'             => 'Date de fin',
         'picture'               => 'Image',
         'summary' => 'Description',
         'nb_questions' => 'Nombre de questions',
         'slug' => 'slug',
+        'wording_category'=>'catégorie',
 
     ],
 ];

@@ -33,6 +33,7 @@ class CreateQuizzesTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('quiz_id')->references('id_quiz')->on('quiz')->onDelete('cascade');
             $table->foreign('user_id')->references('id_user')->on('users')->onDelete('cascade');
+            $table->integer('score');
         });
     }
 

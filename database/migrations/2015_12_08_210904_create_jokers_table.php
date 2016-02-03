@@ -15,7 +15,6 @@ class CreateJokersTable extends Migration
         Schema::create('jokers', function (Blueprint $table) {
             $table->increments('id_joker');
             $table->string('wording_joker')->unique();
-            $table->integer('id_action')->unique();
         });
 
         Schema::create('joker_user', function (Blueprint $table) {

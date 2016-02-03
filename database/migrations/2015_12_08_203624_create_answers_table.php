@@ -23,6 +23,7 @@ class CreateAnswersTable extends Migration
             $table->integer('question_id')->unsigned()->index();
             $table->foreign('answer_id')->references('id_answer')->on('answers')->onDelete('cascade');
             $table->foreign('question_id')->references('id_question')->on('questions')->onDelete('cascade');
+            $table->boolean('is_good');
         });
     }
 
