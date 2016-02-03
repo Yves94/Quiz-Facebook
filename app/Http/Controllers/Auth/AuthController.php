@@ -72,7 +72,7 @@ class AuthController extends Controller
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
-        die(Session::get('FBRLH_'));
+        dd(Session::all());
         return Redirect::to($loginUrl);
     }
 
