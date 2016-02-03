@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Question as Question;
 use \App\Category as Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class QuestionController extends Controller {
     public function listQuestions(Request $request)
@@ -30,14 +31,24 @@ class QuestionController extends Controller {
         $question = new Question();
         if($request->isMethod('post')) {
             //dd($request->all());
-            $this->validate($request,[
-                'question' => 'required|max:255',
-                'categories' => 'required|max:255'
+            $this->validate($request, [
+                'wording_question' => 'required|max:255|alpha_num',
+                'categories' => 'required|max:255|alpha_num',
+                'answer1' => 'required|alpha_num|max:255',
+                'answer2' => 'required|alpha_num|max:255',
+                'answer3' => 'required|alpha_num|max:255',
+                'answer4' => 'required|alpha_num|max:255',
+                'good_answer' => 'required|integer'
             ]);
+
+            dd($request->all());
             $question->wording_question = $request->question;
             $question->save();
 
             $question->categories()->sync($request->categories);
+
+            Session::flash('flash_message', 'Question modifié');
+            return redirect()->route('admin_question_list');
         }
         $data['question'] = $question;
 
@@ -59,17 +70,39 @@ class QuestionController extends Controller {
         if ($request->isMethod('post'))
         {
             $this->validate($request, [
-                'wording_question' => 'required|max:255',
-                'categories' => 'required|max:255'
+                'wording_question' => 'required|max:255|alpha_num',
+                'categories' => 'required|max:255|alpha_num',
+                'answer1' => 'required|alpha_num|max:255',
+                'answer2' => 'required|alpha_num|max:255',
+                'answer3' => 'required|alpha_num|max:255',
+                'answer4' => 'required|alpha_num|max:255',
             ]);
 
+            dd($request->all());
+
             $question->wording_question = $request->wording_question;
+            $question->save();
             $question->categories()->sync($request->categories);
+
+            Session::flash('flash_message', 'Question modifié');
+            return redirect()->route('admin_question_list');
         }
 
         $data['question'] = $question;
         $data['categories'] = DB::table('categories')->lists('wording_category','id_category');
         $data['categoriesSelected'] = $question->getCategoriesIdToArray();
         return view('BackOffice.editQuestion', $data);
+    }
+
+    public function deleteQuestion($id)
+    {
+        $question = Question::findOrFail($id);
+
+        $question->delete();
+
+        Session::flash('flash_message', 'Question supprimé');
+
+        return redirect()->route('admin_quiz_list');
+
     }
 }

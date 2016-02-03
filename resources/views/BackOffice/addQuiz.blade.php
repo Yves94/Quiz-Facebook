@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['url' => 'admin/quiz/add','method'=>'POST']) !!}
+                {!! Form::open(['url' => 'admin/quiz/add','method'=>'POST','files' => true]) !!}
 
                     <div class="form-group">
                         {!! Form::label('title', 'Title') !!}
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('picture','Image') !!}
-                    {!! Form::text('picture',$quiz->picture, ['class' => 'form-control']) !!}
+                    {!! Form::file('picture') !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('start_date','Date de début') !!}
