@@ -20,10 +20,7 @@ class User extends  Model implements AuthenticatableContract
     protected $fillable=['last_name','first_name','email','age_rangs','birthday','gender'];
 
      protected static $facebook_field_aliases = [
-        'id' =>'id_user',
-        'name' => 'last_name',
-        'email' => 'email',
-        'birthday' => 'birthday',
+        'id' =>'id_user'
     ];
 
   	protected $hidden = ['password', 'remember_token'];

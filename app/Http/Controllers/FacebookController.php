@@ -51,7 +51,7 @@ class FacebookController extends Controller
     {
         try {
 
-           $response = $fbSdk->get('/me?fields=id,name,gender,age_range,email,birthday');
+           $response = $fbSdk->get('/me?fields=id,last_name,first_name,gender,age_range,email,birthday');
 
        } catch (Facebook\Exceptions\FacebookSDKException $e) {
 
