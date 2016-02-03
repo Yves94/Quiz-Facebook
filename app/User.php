@@ -11,6 +11,7 @@ class User extends  Model implements AuthenticatableContract
 
 	use EntrustUserTrait; //add this trait to your user model
 	use Authenticatable;
+    use SyncableGraphNodeTrait;
 	protected $primaryKey = 'id_user';//defini the primary key 
  	protected $table = 'users';
 
