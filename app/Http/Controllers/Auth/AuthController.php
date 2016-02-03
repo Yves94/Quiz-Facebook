@@ -91,10 +91,10 @@ class AuthController extends Controller
 
        
         //Auth::login($current_user,true);//Log le user
-        $token = $fb->getAccessTokenFromRedirect();
+        $helper = $fb->getRedirectLoginHelper();
     // @TODO This is going away soon
         
-        dd($token);
+        dd($helper);
 
     }
 }
