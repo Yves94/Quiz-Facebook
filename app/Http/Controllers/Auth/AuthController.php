@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use SammyK\LaravelFacebookSdk\LaravelFacebookSdk;
 use Auth;
 use Redirect;
-
+use Session;
 class AuthController extends Controller
 {
     /*
