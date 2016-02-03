@@ -27,7 +27,7 @@ class QuizController extends Controller
             $data['quizzes'] = \App\Quiz::with('creator')->paginate(5);
         }
 
-        return view('BackOffice.listQuizzes',$data);
+        return view('BackOffice.ListQuizzes',$data);
     }
 
     public function home() {
