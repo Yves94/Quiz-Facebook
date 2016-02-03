@@ -21,6 +21,9 @@
                 <!-- Bouton de droite -->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-flash"></span> Ratio : 0.91</a></li>
+                    @role('Admin')
+                        <li>{!! Html::linkRoute('admin_quiz_list', '<span class="glyphicon glyphicon-cog"></span>') !!}</li>
+                    @endrole
                     <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span></a></li>
                 </ul>
                 <!-- Champ de recherche -->
@@ -64,7 +67,5 @@
             @endif
         </div>
     </div>
-       <h3> {{ Session::get('name') }}</h3> 
-       <h3>  {{ Session::get('facebook_access_token') }}</h3> 
 </body>
 </html>
