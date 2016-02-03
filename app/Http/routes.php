@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use URL;
 use App\User;
 /*Route::get('/', function () {
     return view('welcome');
@@ -57,7 +56,7 @@ Route::group(['prefix' => 'admin'],function () {
 
 Route::match(array('GET', 'POST'),'/',
 [
-    'uses' => 'BackOffice\QuizController@home',
+    'uses' => 'FrontOffice\QuizController@home',
     'as' => 'home',
     'middleware' => 'tokenFB'
 ]);

@@ -30,13 +30,6 @@ class QuizController extends Controller
         return view('BackOffice.ListQuizzes',$data);
     }
 
-    public function home() {
-        $data['quiz'] = Quiz::all();
-        
-        return view('welcome', $data);
-    }
-
-
     public function addQuiz(Request $request)
     {
         $quiz = new Quiz();
