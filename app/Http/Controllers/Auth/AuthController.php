@@ -92,7 +92,7 @@ class AuthController extends Controller
 
        
         //Auth::login($current_user,true);//Log le user
-       $token = Facebook::getTokenFromRedirect(Request::url());
+       $token = $fb->getTokenFromRedirect(Request::url());
         //$helper = $fb->getRedirectLoginHelper();
         /*$facebookClient = $fb->getClient();
          $accessToken = $helper->getAccessToken($facebookClient);*/
