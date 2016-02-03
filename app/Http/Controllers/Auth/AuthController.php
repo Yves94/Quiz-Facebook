@@ -71,7 +71,7 @@ class AuthController extends Controller
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
-        //dd(Session::all());
+        die(Session::all());
         return Redirect::to($loginUrl);
     }
 
@@ -87,7 +87,7 @@ class AuthController extends Controller
         'birthday'      => $user->user['birthday'],
         'age_rangs'     => $user->user['age_range']['min']
         ]);*/
-        dd(Session::all());
+        die(Session::all());
         //Auth::login($current_user,true);//Log le user
         $token = $fb->getAccessTokenFromRedirect();
     // @TODO This is going away soon
