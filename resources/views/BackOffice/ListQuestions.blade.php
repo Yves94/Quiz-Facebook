@@ -37,6 +37,9 @@
                         <th>
                             {{ 'Categorie' }}
                         </th>
+                        <th>
+                            {{ 'Supprimer' }}
+                        </th>
                     </tr>
 
                     @foreach ($questions as $k => $question)
@@ -71,6 +74,14 @@
                             </td>
                             <td>
                                 {{ $categories_text }}
+                            </td>
+                            <td>
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['admin_question_delete', $question->id_question], 'onsubmit' => 'return ConfirmDelete()']) !!}
+
+                                {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', array('type' => 'submit', 'class' => 'btn btn-danger btn-xs')) !!}
+
+                                {!! Form::close() !!}
+
                             </td>
                         </tr>
                     @endforeach

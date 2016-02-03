@@ -26,16 +26,19 @@ Route::group(['prefix' => 'admin'], function () {
         Route::match(array('GET', 'POST'),'list', ['as' => 'admin_question_list', 'uses' => 'BackOffice\questionController@listQuestions']);
         Route::match(array('GET', 'POST'),'edit/{id}', ['as' => 'admin_question_edit', 'uses' =>  'BackOffice\questionController@editQuestion']);
         Route::match(array('GET', 'POST'),'add', ['as' => 'admin_question_list_add', 'uses' =>  'BackOffice\questionController@addQuestion']);
+        Route::delete('delete/{id}',array('as' => 'admin_question_delete', 'uses' => 'BackOffice\QuestionController@deleteQuestion'));
     });
     Route::group(['prefix' => 'category'], function () {
         Route::match(array('GET', 'POST'),'list', ['as' => 'admin_category_list', 'uses' => 'BackOffice\CategoryController@listCategories']);
         Route::match(array('GET', 'POST'),'edit/{id}', ['as' => 'admin_category_edit', 'uses' => 'BackOffice\CategoryController@editCategory']);
         Route::match(array('GET', 'POST'),'add',['as' => 'admin_category_add', 'uses' => 'BackOffice\CategoryController@addCategory']);
+        Route::delete('delete/{id}',array('as' => 'admin_category_delete', 'uses' => 'BackOffice\CategoryController@deleteCategory'));
     });
     Route::group(['prefix' => 'answer'], function () {
         Route::match(array('GET', 'POST'),'list', ['as' => 'admin_answer_list', 'uses' => 'BackOffice\AnswerController@listAnswers']);
         Route::match(array('GET', 'POST'),'edit/{id}',['as' => 'admin_answer_edit', 'uses' => 'BackOffice\AnswerController@editAnswer']);
         Route::match(array('GET', 'POST'),'add', ['as' => 'admin_answer_add', 'uses' => 'BackOffice\AnswerController@addAnswer']);
+        Route::delete('delete/{id}',array('as' => 'admin_answer_delete', 'uses' => 'BackOffice\AnswerController@deleteAnswer'));
     });
     Route::group(['prefix' => 'user'], function () {
         Route::match(array('GET', 'POST'),'list',['as' => 'admin_user_list', 'uses' => 'BackOffice\UserController@listUsers']);

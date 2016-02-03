@@ -63,19 +63,7 @@
     </nav>
 
     @show
-    <script>
-        $(document).ready(function() {
-            $('.datepicker').datetimepicker({
-                locale: 'fr',
-            //format: 'd/MM/YYYY'
-            format: 'L'
-        });
-            $('.multiselect').multiselect({
-                nonSelectedText: 'Selectionnez une valeur',
-                allSelectedText: 'Tout est sélectionné'
-            });
-        });
-    </script>
+
     <div class="container">
         @if (Session::has("flash_message"))
         <div class="alert alert-success">
@@ -93,6 +81,30 @@
     @endif
     @yield('content')
 </div>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.datepicker').datetimepicker({
+                locale: 'fr',
+                //format: 'd/MM/YYYY'
+                format: 'L'
+            });
+            $('.multiselect').multiselect({
+                nonSelectedText: 'Selectionnez une valeur',
+                allSelectedText: 'Tout est sélectionné'
+            });
+        });
+
+        function ConfirmDelete()
+        {
+            var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+        }
+    </script>
 
 </body>
 </html>

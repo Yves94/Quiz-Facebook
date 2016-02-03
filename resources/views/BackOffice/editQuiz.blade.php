@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['url' => 'admin/quiz/edit/'.$quiz->slug,'method'=>'POST']) !!}
+                {!! Form::open(['url' => 'admin/quiz/edit/'.$quiz->slug,'method'=>'POST', 'files' => true]) !!}
 
                     <div class="form-group">
                         {!! Form::label('title', 'Title') !!}
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('picture','Image') !!}
-                    {!! Form::files('picture', ['class' => 'form-control']) !!}
+                    {!! Form::file('picture') !!}
                 </div>
 
                 <div class="form-group">
@@ -56,14 +56,6 @@
                     {!! Form::submit('Valider') !!}
                 </div>
                 {!! Form::close() !!}
-
-                @if( $errors->any())
-                    <ul class="alert alert-danger">
-                        @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                            @endforeach
-                    </ul>
-                @endif
             </div>
         </div>
     </div>

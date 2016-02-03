@@ -9,28 +9,27 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 {!! Form::open(['url' => 'admin/quiz/list','method'=>'POST']) !!}
                 <div class="form-group">
-                    {!! Form::label('search', 'Rechercher') !!}
-                    {!! Form::text('search',null, ['class' => 'form-control']) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::submit('Rechercher') !!}
+                    {!! Form::text('search',null, ['class' => 'form-control', 'placeholder' => 'Rechercher']) !!}
+                    <i class="glyphicon glyphicon-search form-control-feedback" style="margin-right: 20px; line-height: 39px"></i>
                 </div>
                 {!! Form::close() !!}
             </div>
-            <div class="col-md-6">
+        </div>
+        <h2>Tout les Quiz</h2>
+        <div class="row add">
+            <div class="col-md-12">
                 <a href="{{url('admin/quiz/add')}}">
-                    <button type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus"></i></button>
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    Ajouter
                 </a>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-striped table-hover " style="text-align: center;">
+                <table class="table table-striped table-hover table-bo">
                     <tr>
                         <th>
                             {{ 'Id' }}
@@ -86,10 +85,10 @@
                             </td>
                             <td>
                                 {{
-                                    $creator->first_name
-                                    .' '.
-                                        $creator->last_name
-                                }}
+                                $creator->first_name
+                                .' '.
+                                $creator->last_name
+                            }}
                             </td>
                             <td>
                                 {{ $quiz->slug }}
@@ -115,11 +114,12 @@
                             <td>
                                 <a href="{{url('admin/quiz/participants/')}}/{{$quiz->slug}}">
                                     <button type="button" class="btn btn-primary btn-xs">Voir les participants</button>
+
                                 </a>
                             </td>
                             <td>
                                 <a href="{{url('admin/quiz/edit')}}/{{$quiz->slug}}">
-                                {!! Form::button('<i class="glyphicon glyphicon-pencil"></i>', array('type' => 'button', 'class' => 'btn btn-info btn-xs')) !!}
+                                    {!! Form::button('<i class="glyphicon glyphicon-pencil"></i>', array('type' => 'button', 'class' => 'btn btn-info btn-xs')) !!}
                                 </a>
                             </td>
                             <td>
@@ -146,14 +146,4 @@
 
     </div>
 
-    <script>
-        function ConfirmDelete()
-        {
-            var x = confirm("Are you sure you want to delete?");
-            if (x)
-                return true;
-            else
-                return false;
-        }
-    </script>
 @endsection

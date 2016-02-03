@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BackOffice;
 use Illuminate\Http\Request;
 use \App\Category as Category;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller {
     public function listCategories(Request $request)
@@ -33,6 +34,9 @@ class CategoryController extends Controller {
             ]);
             $category->wording_category = $request->wording_category;
             $category->save();
+
+            Session::flash('flash_message', 'Catégorie créé');
+            return redirect()->route('admin_category_list');
         }
         $data['category'] = $category;
 
@@ -58,9 +62,24 @@ class CategoryController extends Controller {
             $category->wording_category = $request->wording_category;
             $category->save();
 
+            Session::flash('flash_message', 'Catégorie modifié');
+            return redirect()->route('admin_category_list');
+
         }
         $data['category'] = $category;
         return view('BackOffice.editCategory', $data);
+    }
+
+    public function deleteCategory($id)
+    {
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        Session::flash('flash_message', 'Catégorie supprimé');
+
+        return redirect()->route('admin_category_list');
+
     }
 
 }
