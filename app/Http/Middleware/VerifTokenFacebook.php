@@ -49,7 +49,7 @@ class VerifTokenFacebook
             'age_rangs'     => $me->item['age_range']['min']
             ]);
              dd($current_user);*/
-            Session::put('name',(string) $me->getName());
+           // Session::put('name',(string) $me->getName());
             Session::put('facebook_access_token', (string) $token);
             return $next($request);
         }
