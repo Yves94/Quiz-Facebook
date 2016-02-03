@@ -36,7 +36,7 @@ class User extends  Model implements AuthenticatableContract
 		$instance = $user->firstOrNew($attributes);  	
 	    $instance->fill($values);
 	    $instance->save();
-
+        
 	    //attach Role to user  
         if(!($instance->hasRole('User')) || !($instance->hasRole('Admin')))
         {
