@@ -19,8 +19,8 @@ use App\User;
 //Route::get('/', 'QuizController@home');
 
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::group(['prefix' => 'quiz'], function () {
+Route::group(['prefix' => 'admin'],array('https',function () {
+    Route::group(['prefix' => 'quiz'],function () {
         Route::match(array('GET', 'POST'),'list', ['as' => 'admin_quiz_list', 'uses' => 'BackOffice\QuizController@listQuizzes']);
         Route::match(array('GET', 'POST'),'edit/{slug}', ['as' => 'admin_quiz_edit', 'uses' => 'BackOffice\QuizController@editQuiz']);
         Route::match(array('GET', 'POST'),'add', ['as' => 'admin_quiz_add', 'uses' => 'BackOffice\QuizController@addQuiz']);
@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::match(array('GET', 'POST'),'edit/{id}',['as' => 'admin_joker_edit', 'uses' => 'BackOffice\JokerController@editJoker']);
         Route::match(array('GET', 'POST'),'add',['as' => 'admin_joker_add', 'uses' => 'BackOffice\JokerController@addJoker']);
     });
-});
+}));
 
 Route::match(array('GET', 'POST'),'/',
 [
