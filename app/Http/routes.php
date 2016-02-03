@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+use URL;
 use App\User;
 /*Route::get('/', function () {
     return view('welcome');
@@ -18,6 +18,7 @@ use App\User;
 
 //Route::get('/', 'QuizController@home');
 
+URL::forceSchema('https');
 
 Route::group(['prefix' => 'admin'],function () {
     Route::group(['prefix' => 'quiz'],function () {
