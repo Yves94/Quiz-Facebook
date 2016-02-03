@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\User as User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Request;
 
 class UserController extends Controller {
     public function listUsers(Request $request)
@@ -21,7 +22,8 @@ class UserController extends Controller {
                 ->orWhere('first_name', 'like', '%'.$request->search.'%')
                 ->orWhere('age_rangs', 'like', '%'.$request->search.'%')
                 ->orWhere('id_user', 'like', '%'.$request->search.'%')
-                ->paginate(5);
+                ->paginate(5)
+                ->setBaseUrl('https://' . Request::getHttpHost() . '/' . Request::path());
         } else {
             $data['users'] = User::paginate(1);
         }
