@@ -16,7 +16,7 @@ class FacebookController extends Controller
     */
     public function loginWithFacebook(LaravelFacebookSdk $fbSdk)
     {
-        $helper = $fb->getRedirectLoginHelper();
+        $helper = $fbSdk->getRedirectLoginHelper();
         $permissions = ['email']; // optional
         $callback = 'https://quizfb.herokuapp.com/callback/';
         $loginUrl = $helper->getLoginUrl($callback, $permissions);
@@ -28,7 +28,7 @@ class FacebookController extends Controller
     */
     public function callbackFromFacebook(LaravelFacebookSdk $fbSdk)
     {
-        $helper = $fb->getRedirectLoginHelper();
+        $helper = $fbSdk->getRedirectLoginHelper();
 
         try {
             $accessToken = $helper->getAccessToken('https://quizfb.herokuapp.com/callback/');
