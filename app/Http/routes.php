@@ -19,7 +19,7 @@ use App\User;
 //Route::get('/', 'QuizController@home');
 
 
-Route::group(['prefix' => 'admin'],array('https',function () {
+Route::group(['prefix' => 'admin'],function () {
     Route::group(['prefix' => 'quiz'],function () {
         Route::match(array('GET', 'POST'),'list', ['as' => 'admin_quiz_list', 'uses' => 'BackOffice\QuizController@listQuizzes']);
         Route::match(array('GET', 'POST'),'edit/{slug}', ['as' => 'admin_quiz_edit', 'uses' => 'BackOffice\QuizController@editQuiz']);
