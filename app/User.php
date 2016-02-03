@@ -16,7 +16,7 @@ class User extends  Model implements AuthenticatableContract
 	protected $primaryKey = 'id_user'; //defini the primary key 
  	protected $table = 'users';
 
-    protected $fillable=['last_name','first_name','email','age_rangs','birthday','gender'];
+    protected $fillable=['last_name','first_name','email','birthday','gender'];
 
   	protected $hidden = ['password', 'remember_token'];
     // Relation 
