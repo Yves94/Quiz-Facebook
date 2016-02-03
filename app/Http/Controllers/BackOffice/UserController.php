@@ -19,7 +19,6 @@ class UserController extends Controller {
             $data['users'] = User::where('last_name', 'like', '%'.$request->search.'%')
                 ->orWhere('email', 'like', '%'.$request->search.'%')
                 ->orWhere('first_name', 'like', '%'.$request->search.'%')
-                ->orWhere('age_rangs', 'like', '%'.$request->search.'%')
                 ->orWhere('id_user', 'like', '%'.$request->search.'%')
                 ->paginate(5);
         } else {
