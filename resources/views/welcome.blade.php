@@ -22,8 +22,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-flash"></span> Ratio : 0.91</a></li>
                     @if(Entrust::hasRole('Admin'))
-                        <li><a href="{!! route('admin_quiz_list') !!}"><span class="glyphicon glyphicon-cog"></span></li>
-                   @endif
+                        <li><a href="{!! route('admin_quiz_list') !!}"><span class="glyphicon glyphicon-cog"></span></a></li>
+                    @endif
                     <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span></a></li>
                 </ul>
                 <!-- Champ de recherche -->
