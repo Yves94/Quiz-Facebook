@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use App\User;
-use Illuminate\Contracts\Auth\Authenticatable;
+use Auth;
 
 class FacebookController extends Controller
 {
