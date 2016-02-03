@@ -19,8 +19,14 @@ class VerifTokenFacebook
     {
 
         try {
-
-            $token = Facebook::getCanvasHelper()->getAccessToken();
+            if(isset(Session::has('facebook_access_token')))
+            {
+                $token = Session::get('facebook_access_token')   
+            }
+            else
+            {
+              $token = Facebook::getCanvasHelper()->getAccessToken();
+            }       
 
         } catch (Facebook\Exceptions\FacebookSDKException $e) {
 

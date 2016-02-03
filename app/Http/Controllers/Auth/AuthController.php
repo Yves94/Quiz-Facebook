@@ -100,7 +100,7 @@ class AuthController extends Controller
         dd($e->getMessage());
     }
         if($accessToken){
-            
+            Session::put('facebook_access_token', (string) $accessToken);
             return redirect()->route('home');
         }
     }
