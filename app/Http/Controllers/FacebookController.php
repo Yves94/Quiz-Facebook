@@ -49,7 +49,7 @@ class FacebookController extends Controller
     {
         try {
 
-           $response = $fb->get('/me?fields=id,name,gender,age_range,email,birthday');
+           $response = $fbSdk->get('/me?fields=id,name,gender,age_range,email,birthday');
 
        } catch (Facebook\Exceptions\FacebookSDKException $e) {
 
