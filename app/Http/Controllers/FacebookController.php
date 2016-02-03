@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
-
+use App\User;
 class FacebookController extends Controller
 {
     /**
