@@ -41,15 +41,30 @@ class QuizController extends Controller
                 'title' => 'required|max:255|unique:quiz',
                 'nb_questions' => 'required|int',
                 'summary' => 'required',
-                'picture' => 'required',
+                'picture' => 'required|image',
                 'start_date' => 'required',
                 'end_date' => 'required'
             ]);
+            //dd($request->all());
             //dd($request->start_date,strtotime($request->start_date),$request->end_date, strtotime($request->end_date));
-            $validator->after(function($validator) use ($request) {
-
+            $validator->after(function($validator) use ($request, &$quiz) {
+                // check date start < date end
                 if( strtotime(str_replace('/','_',$request->start_date)) < strtotime(str_replace('/','_',$request->end_date))) {
                     $validator->errors()->add('Date','La date de début est superieur à la date de fin');
+                }
+                // save image
+                if(!empty($request->picture) && !$request->picture->isValid()) {
+                    $validator->errors()->add('Picture','L\'image n\'est pas valide');
+                } else {
+                    $destinationPath = base_path() . '/public/images/logo_quiz'; // upload path
+                    // getting image extension
+                    $extension = $request->file('picture')->getClientOriginalExtension();
+                    // generate file name
+                    $fileName = str_slug($request->title).'.'.$extension; // renameing image
+                    // assign file name to the quiz
+                    $quiz->picture = $fileName;
+                    // move tmp for good path
+                    $request->file('picture')->move($destinationPath, $fileName);
                 }
             });
 
@@ -61,10 +76,8 @@ class QuizController extends Controller
             $quiz->slug = str_slug($request->title);
             $quiz->nb_questions = $request->nb_questions;
             $quiz->summary = $request->summary;
-            $quiz->picture = $request->picture;
             $quiz->start_date = \DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
             $quiz->end_date = \DateTime::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
-            $quiz->title = $request->title;
             $quiz->color = $request->color;
             $quiz->creator = 1;
             $quiz->save();
@@ -100,10 +113,24 @@ class QuizController extends Controller
             ]);
 
 
-            $validator->after(function($validator) use ($request) {
-
-                if( strtotime($request->start_date) > strtotime($request->end_date)) {
+            $validator->after(function($validator) use ($request, &$quiz) {
+                // check date start < date end
+                if( strtotime(str_replace('/','_',$request->start_date)) < strtotime(str_replace('/','_',$request->end_date))) {
                     $validator->errors()->add('Date','La date de début est superieur à la date de fin');
+                }
+                // save image
+                if(!empty($request->picture) && !$request->picture->isValid()) {
+                    $validator->errors()->add('Picture','L\'image n\'est pas valide');
+                } else {
+                    $destinationPath = base_path() . '/public/images/logo_quiz'; // upload path
+                    // getting image extension
+                    $extension = $request->file('picture')->getClientOriginalExtension();
+                    // generate file name
+                    $fileName = str_slug($request->title).'.'.$extension; // renameing image
+                    // assign file name to the quiz
+                    $quiz->picture = $fileName;
+                    // move tmp for good path
+                    $request->file('picture')->move($destinationPath, $fileName);
                 }
             });
 
@@ -115,11 +142,11 @@ class QuizController extends Controller
             $quiz->slug = str_slug($request->title);
             $quiz->nb_questions = $request->nb_questions;
             $quiz->summary = $request->summary;
-            $quiz->picture = $request->picture;
             $quiz->start_date = \DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
             $quiz->end_date = \DateTime::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
             $quiz->title = $request->title;
             $quiz->color = $request->color;
+
             $quiz->save();
 
             Session::flash('flash_message', 'Quiz modifié');
