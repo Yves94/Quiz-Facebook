@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use App\User;
+use Illuminate\Contracts\Auth\Authenticatable;
+
 class FacebookController extends Controller
 {
     /**
@@ -68,6 +70,6 @@ class FacebookController extends Controller
         'birthday'      =>  $facebook_user->getBirthDay()
         ]);
 
-
+        Auth::login($user);
     }
 }
