@@ -72,6 +72,8 @@ class QuizController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
+
+            $user = Auth::user(); //get user logged
             $quiz->title = $request->title;
             $quiz->slug = str_slug($request->title);
             $quiz->nb_questions = $request->nb_questions;
