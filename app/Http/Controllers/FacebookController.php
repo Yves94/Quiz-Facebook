@@ -71,5 +71,9 @@ class FacebookController extends Controller
         ]);
 
         Auth::login($current_user);
+
+        $user = Auth::user();
+
+        dd($user);
     }
 }
