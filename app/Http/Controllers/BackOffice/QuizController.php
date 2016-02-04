@@ -34,8 +34,6 @@ class QuizController extends Controller
 
     public function addQuiz(Request $request)
     {
-           $user = Auth::user();
-           dd($user);
         $quiz = new Quiz();
 
         if ($request->isMethod('post'))
@@ -74,7 +72,8 @@ class QuizController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-         
+           $user = Auth::user();
+           dd($user);
             $quiz->title = $request->title;
             $quiz->slug = str_slug($request->title);
             $quiz->nb_questions = $request->nb_questions;
