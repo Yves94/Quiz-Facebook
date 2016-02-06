@@ -11,3 +11,25 @@
 .answersContent {
 	font-size: 20px;
 }
+
+.questionContainer {
+	border: 1px solid rgb(0, 140, 186);
+}
+
+.joker {
+	height: 100%;
+	width: 40px;
+	display: inline-block;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.joker:hover {
+	background-color: #eee;
+}
+
+.questionProgressTime {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 15px;
+}
