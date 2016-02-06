@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <link href="{{ secure_asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-         <script src="{{ secure_asset('assets/js/jquery-2.2.0.min.js') }}"></script>
-         <script src="{{ secure_asset('assets/js/bootstrap.min.js') }}"></script>
+         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+         <script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
+         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
          <title>Qiz - Accueil</title>
     </head>
 <body>
@@ -37,9 +37,9 @@
 
         <hr>
 
-    <div class="row">
+        @if(isset($quiz))
+            <div class="row">
             <!-- Affichage de tous les quiz -->
-            @if(isset($quiz))
                 @foreach ($quiz as $qiz)
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="thumbnail" style="padding:0;">
@@ -64,8 +64,12 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
-        </div>
+            
+            </div>
+        @endif
+
+        @yield('content')
+
     </div>
 </body>
 </html>

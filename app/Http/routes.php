@@ -17,7 +17,7 @@ use App\User;
 
 //Route::get('/', 'QuizController@home');
 
-URL::forceSchema('https');
+// URL::forceSchema('https');
 
 Route::group(['prefix' => 'admin'],function () {
     Route::group(['prefix' => 'quiz'],function () {
@@ -62,6 +62,12 @@ Route::match(array('GET', 'POST'),'/',
     'uses' => 'FrontOffice\QuizController@home',
     'as' => 'home',
     'middleware' => 'tokenFB'
+]);
+
+Route::match(array('GET', 'POST'), 'questions',
+[
+    'uses' => 'FrontOffice\QuestionController@index',
+    'as' => 'questions'
 ]);
 
 Route::match(array('GET', 'POST'),'login',
