@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-         <script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
-         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-         <title>Qiz - Accueil</title>
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
+        <script src="{{ asset('assets/js/jquery-2.2.0.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <title>Qiz - @yield('title')</title>
     </head>
 <body>
     <div class="container">

@@ -1,0 +1,13 @@
+.questionHeader {
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.questionContent {
+	font-size: 20px;
+}
+
+.answersContent {
+	font-size: 20px;
+}
