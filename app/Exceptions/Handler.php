@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Exceptions;
-
+use Auth;
+use Log;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -42,6 +43,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        // handle 403 errors
+        if ($e instanceof HttpException && $e->getStatusCode()==403) {
+            Log::alert('user with id : '. Auth::user()->id_user . ' attempts to access the BackOffice');
+        }
+
         if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }

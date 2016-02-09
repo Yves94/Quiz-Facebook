@@ -72,8 +72,8 @@ class QuizController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-            $user = Auth::user();
-            dd($user);
+
+            $user = Auth::user(); //get user logged
             $quiz->title = $request->title;
             $quiz->slug = str_slug($request->title);
             $quiz->nb_questions = $request->nb_questions;
@@ -81,7 +81,7 @@ class QuizController extends Controller
             $quiz->start_date = \DateTime::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
             $quiz->end_date = \DateTime::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
             $quiz->color = $request->color;
-            //$quiz->creator = $user->iduser;
+            $quiz->creator = $user->id_user;
             $quiz->save();
 
             Session::flash('flash_message', 'Quiz ajouté');

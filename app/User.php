@@ -39,7 +39,7 @@ class User extends  Model implements AuthenticatableContract
 	    $instance->save();
 
 	    //attach Role to user  
-        if(($instance->hasRole('Admin') == false))
+        if(($instance->hasRole('Admin') == false) && $instance->hasRole('User')==false)
         {
             $role = new Role();
             $role = Role::where('name','=','User')->first();
