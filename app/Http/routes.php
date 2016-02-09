@@ -17,7 +17,7 @@ use App\User;
 
 //Route::get('/', 'QuizController@home');
 
-// URL::forceSchema('https');
+URL::forceSchema('https');
 
 Route::group(['prefix' => 'admin'],function () {
     Route::group(['prefix' => 'quiz'],function () {
