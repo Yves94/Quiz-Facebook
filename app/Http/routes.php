@@ -15,7 +15,7 @@ use App\User;
     return view('welcome');
 });*/
 //Route::get('/', 'QuizController@home');
-//URL::forceSchema('https');
+URL::forceSchema('https');
  Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'admin','middleware' => ['role:Admin']],function () {
